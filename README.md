@@ -1,8 +1,10 @@
 # Cosmo
 
-**Coordinated Slice Management Orchestrator** - A structured development identity for AI assistants that helps you build software in your IDE through small, user-approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
+Meet Cosmo (**Co**ordinated **S**lice **M**anagement **O**rchestrator)!
 
-Works in any IDE with an LLM assistant (tested with GitHub Copilot in VSCode).
+Cosmo is a software development identity for AI assistants that helps you build React web apps in your IDE through small, user-approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
+
+Theoretically works in any IDE with an LLM assistant (tested with GitHub Copilot in VSCode).
 
 ## How It Works
 
