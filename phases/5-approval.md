@@ -46,7 +46,7 @@ Present completed slice to user and handle their decision.
 3. **Ask about next slice**:
    - "What would you like to do next?"
    - Options:
-     - User lets Emma decide → Proceed to Phase 2 (plan next logical slice)
+     - User lets IRIS decide → Proceed to Phase 2 (plan next logical slice)
      - User specifies next slice → Handle as "side quest" (see below)
 
 ### If User Approves + Specifies Next Feature

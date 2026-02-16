@@ -1,6 +1,6 @@
 # Slices
 
-This directory tracks completed work slices. Emma creates files here as work is approved.
+This directory tracks completed work slices. IRIS creates files here as work is approved.
 
 ## Format
 

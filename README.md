@@ -1,10 +1,10 @@
-# Emma
+# IRIS
 
 A single-agent, iterative development system that builds software in small, approved slices.
 
 ## How It Works
 
-Emma loops through 5 phases:
+IRIS loops through 5 phases:
 1. **Interview** → Define product spec
 2. **Plan** → Identify next small increment
 3. **Implement** → Write the code
@@ -16,34 +16,34 @@ Emma loops through 5 phases:
 Start a conversation with your AI assistant:
 
 ```
-Read emma.md and follow those instructions.
+Read iris.md and follow those instructions.
 ```
 
-Emma takes over from there.
+IRIS takes over from there.
 
-## Using Emma
+## Using IRIS
 
 ### Starting a Project
 
-1. Tell your AI: "Read emma.md and follow those instructions"
-2. Emma checks `spec.md`:
-   - Empty → Emma interviews you to define your project
-   - Complete → Emma starts planning the first slice
-3. Stay in the same conversation - Emma loops through all slices until done
+1. Tell your AI: "Read iris.md and follow those instructions"
+2. IRIS checks `spec.md`:
+   - Empty → IRIS interviews you to define your project
+   - Complete → IRIS starts planning the first slice
+3. Stay in the same conversation - IRIS loops through all slices until done
 
 ### During Development
 
 Each slice:
-1. Emma plans the next increment (1-3 files)
+1. IRIS plans the next increment (1-3 files)
 2. You approve or adjust
-3. Emma implements
-4. Emma reviews automatically
-5. Emma presents results
+3. IRIS implements
+4. IRIS reviews automatically
+5. IRIS presents results
 
 Then you decide:
-- **"Approve"** → Emma records slice and asks what's next
-- **"Approve + add X"** → Emma updates spec, then plans that slice
-- **"Change Y"** → Emma iterates on current slice
+- **"Approve"** → IRIS records slice and asks what's next
+- **"Approve + add X"** → IRIS updates spec, then plans that slice
+- **"Change Y"** → IRIS iterates on current slice
 
 ### Resuming After a Break
 
@@ -51,23 +51,23 @@ All progress lives in files (no conversational history).
 
 To resume:
 1. Start a new conversation
-2. Say: "Read emma.md and follow those instructions"
-3. Emma automatically reads `spec.md`, `slices/`, and your code, then continues
+2. Say: "Read iris.md and follow those instructions"
+3. IRIS automatically reads `spec.md`, `slices/`, and your code, then continues
 
 ### Example Flow
 
 ```
-You: "Read emma.md and follow those instructions"
-Emma: "spec.md is empty. What is the goal of your project?"
+You: "Read iris.md and follow those instructions"
+IRIS: "spec.md is empty. What is the goal of your project?"
 You: "A markdown note-taking app"
-Emma: [interviews, writes spec.md]
+IRIS: [interviews, writes spec.md]
       "Spec complete. Planning first slice..."
       "Slice 1: Project setup. Approve?"
 You: "Yes"
-Emma: [implements, tests, presents]
+IRIS: [implements, tests, presents]
       "Slice 1 complete. Tests passing. Approve?"
 You: "Yes"
-Emma: [records SLICE-001-project-setup.md]
+IRIS: [records SLICE-001-project-setup.md]
       "Slice 2: Note list view. Approve?"
 ...
 ```
@@ -75,7 +75,7 @@ Emma: [records SLICE-001-project-setup.md]
 ## Project Structure
 
 ```
-emma.md              # Agent orchestrator
+iris.md              # Agent orchestrator
 architecture.md      # Architecture rules
 spec.md              # Product specification
 phases/              # Detailed phase instructions
@@ -91,9 +91,9 @@ templates/           # Clean templates
 reset.sh             # Restore templates
 ```
 
-## Using Emma
+## Using IRIS
 
-This repo contains the Emma framework. Working files (`spec.md`, `slices/`) are gitignored so you can use Emma directly here or clone for separate projects.
+This repo contains the IRIS framework. Working files (`spec.md`, `slices/`) are gitignored so you can use IRIS directly here or clone for separate projects.
 
 ## Resetting
 
@@ -111,8 +111,8 @@ To clear and start fresh:
 
 ## Files
 
-- **emma.md** - High-level orchestrator for the agent
+- **iris.md** - High-level orchestrator for the agent
 - **architecture.md** - Single source of truth for code organization
 - **phases/** - Detailed rules for each phase
-- **spec.md** - Product spec (Emma fills out by interviewing you)
+- **spec.md** - Product spec (IRIS fills out by interviewing you)
 - **slices/** - History of completed work
