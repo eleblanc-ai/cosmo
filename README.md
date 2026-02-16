@@ -75,7 +75,7 @@ Cosmo: [records SLICE-001-project-setup.md]
 ## Project Structure
 
 ```
-cosmo.md              # Agent orchestrator
+cosmo.md             # Agent orchestrator
 architecture.md      # Architecture rules
 spec.md              # Product specification
 phases/              # Detailed phase instructions
