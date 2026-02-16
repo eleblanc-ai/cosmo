@@ -146,30 +146,14 @@ reset.sh             # Script to restore templates
 your-project/        # Your actual code goes here
 ```
 
-## Development vs Distribution Repos
+## Using Emma
 
-**This repo** (`emma-playground/`) is for framework development:
-- Experiment with agent architecture
-- Test changes with real specs and slices
-- Working files (`spec.md`, `architecture.md`, `slices/SLICE-*.md`) are gitignored
+**This repo** contains the Emma framework. Working files like `spec.md`, `architecture.md`, and `slices/SLICE-*.md` are gitignored so you can:
+- Use Emma directly here to build projects
+- Experiment with the framework
+- Test and iterate
 
-**Distribution repo** (`emma/`) is for starting new projects:
-- Clean framework files only
-- Clone this to start new projects
-- Sync updates from playground repo
-
-### Syncing Changes
-
-After making framework improvements in this repo, run:
-
-```bash
-./sync-template.sh
-```
-
-This will automatically:
-- Copy framework files to `emma/`
-- Commit changes with timestamp
-- Push to remote (if configured)
+**For separate projects**: Clone or copy this repo to start a new project with Emma. Each project can be its own repository.
 
 ## Resetting Emma
 
