@@ -146,17 +146,17 @@ reset.sh             # Script to restore templates
 your-project/        # Your actual code goes here
 ```
 
-## Development vs Template Repos
+## Development vs Distribution Repos
 
-**This repo** (`emma/`) is for framework development:
+**This repo** (`emma-playground/`) is for framework development:
 - Experiment with agent architecture
 - Test changes with real specs and slices
 - Working files (`spec.md`, `architecture.md`, `slices/SLICE-*.md`) are gitignored
 
-**Template repo** (`emma-template/`) is for distribution:
+**Distribution repo** (`emma/`) is for starting new projects:
 - Clean framework files only
 - Clone this to start new projects
-- Sync updates from development repo
+- Sync updates from playground repo
 
 ### Syncing Changes
 
@@ -167,7 +167,7 @@ After making framework improvements in this repo, run:
 ```
 
 This will automatically:
-- Copy framework files to `emma-template/`
+- Copy framework files to `emma/`
 - Commit changes with timestamp
 - Push to remote (if configured)
 
