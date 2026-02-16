@@ -30,10 +30,25 @@ Each completed slice gets documented in `slices/SLICE-###-description.md` so the
    - Clone your new repo
 
 2. **Set up your React project:**
+
+   Since the template includes the `cosmo/` folder, you'll need to initialize your React app like this:
+
    ```bash
    cd my-app
-   npx create-react-app . --template typescript
-   # or: npm create vite@latest . -- --template react-ts
+
+   # Create React app in a temp directory
+   cd ..
+   npx create-react-app temp --template typescript
+
+   # Move React files to your project
+   mv temp/* temp/.gitignore my-app/
+   rm -rf temp
+
+   # Back to your project
+   cd my-app
+
+   # Install dependencies
+   npm install
    ```
 
 3. **Open in your LLM-enabled IDE**
