@@ -20,6 +20,12 @@ Present completed slice to user and handle their decision.
    - Files created/modified
    - Review results (tests passed, lint clean, etc.)
    - Link to relevant files with line numbers if helpful
+   - **Manual test checklist** (when applicable):
+     - If the slice includes UI/interface elements, user interactions, or visual features
+     - Create a numbered checklist of specific things the user should verify
+     - Make it actionable: "Click X", "Verify Y appears", "Check Z works"
+     - Include edge cases to test (empty states, error states, etc.)
+     - Keep it focused (3-8 items max)
 
 2. **Ask for approval**: "Approve this slice?"
 
@@ -109,6 +115,12 @@ Where:
 - ✓ Lint clean
 - ✓ Build successful
 - ✓ Architecture compliance verified
+
+## Manual Testing (if applicable)
+Checklist used for user verification:
+1. [Test item that was verified]
+2. [Another test item]
+3. [Edge case that was checked]
 
 ## Notes
 Any relevant context for future reference.

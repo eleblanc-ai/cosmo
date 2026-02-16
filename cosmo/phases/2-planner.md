@@ -34,7 +34,13 @@ Before planning, you MUST read:
    - What can be tested independently?
    - What provides user-visible value?
 
-3. **Create the slice plan** with these elements:
+3. **Check for refactoring needs**:
+   - Will this slice use any code currently in a feature folder?
+   - If yes, that code needs to be promoted to `src/shared` first
+   - Plan a separate refactoring slice before the feature slice
+   - Example: "Move ConfirmModal from features/auth to src/shared"
+
+4. **Create the slice plan** with these elements:
    - **Name**: 1-3 word description (becomes SLICE-NNN-name.md)
    - **Goal**: One sentence - what this accomplishes
    - **Why now**: Prerequisites, dependencies, logical order
@@ -48,15 +54,15 @@ Before planning, you MUST read:
    - **Verification**: How to verify it works (e.g., `npm run verify`, manual test steps)
    - **Risks/Open decisions**: Any unknowns or tradeoffs to discuss
 
-4. **Verify plan completeness**:
+5. **Verify plan completeness**:
    - Is the slice minimal and clear?
    - Is verification defined?
    - Are there unanswered architectural conflicts?
    - If yes to any → refine the plan
 
-5. **Present the complete plan to user**
+6. **Present the complete plan to user**
 
-6. **Get user approval before proceeding**
+7. **Get user approval before proceeding**
 
 ## Rules
 - **One slice at a time**: Don't plan multiple slices ahead
@@ -83,6 +89,7 @@ A slice is a small, focused increment of work—like adding a login button, crea
 **Good slices** (1-3 files, one focused session):
 - Project setup, single component, one API endpoint, database schema for one entity, auth flow (login only)
 - Has clear done criteria, can be tested, adds user value, doesn't break code, touches all necessary layers
+- Refactoring slice: Move component from feature to shared (when needed by 2+ features)
 
 **Too large** (break down):
 - "Complete user management" → create, list, edit (separate slices)
