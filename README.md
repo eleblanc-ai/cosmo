@@ -1,6 +1,6 @@
 # Cosmo
 
-**Coordinated Slice Management Orchestrator** - A single-agent, iterative development system that builds software in small, approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to deliver production-quality code incrementally.
+**Coordinated Slice Management Orchestrator** - An AI software development agent that helps you build software in small, user-approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
 
 ## How It Works
 
