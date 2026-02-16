@@ -8,6 +8,10 @@ set -e
 echo "🛸 Initializing Cosmo project..."
 echo ""
 
+# Copy Cosmo README to preserve it before Vite overwrites
+echo "📄 Moving README.md to COSMO-README.md..."
+mv README.md COSMO-README.md
+
 # Create Vite project (auto-confirm existing files)
 echo "📦 Creating Vite + React + TypeScript project..."
 npm create vite@latest . -- --template react-ts || true
