@@ -32,7 +32,6 @@ Each completed slice gets documented in `slices/SLICE-###-description.md` so the
 2. **Run the initialization script:**
 
    ```bash
-   cd my-app
    chmod +x cosmo/init.sh
    ./cosmo/init.sh
    ```

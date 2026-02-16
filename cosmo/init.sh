@@ -10,7 +10,7 @@ echo ""
 
 # Create Vite project (auto-confirm existing files)
 echo "📦 Creating Vite + React + TypeScript project..."
-yes | npm create vite@latest . -- --template react-ts || true
+npm create vite@latest . -- --template react-ts || true
 
 # Install dependencies
 echo ""
