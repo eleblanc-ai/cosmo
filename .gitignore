@@ -1,0 +1,10 @@
+# Working files (generated during experimentation)
+spec.md
+architecture.md
+slices/SLICE-*.md
+
+# Test projects
+your-project/
+
+# OS files
+.DS_Store
