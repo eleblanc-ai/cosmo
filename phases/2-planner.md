@@ -3,51 +3,29 @@
 ## Purpose
 Identify the next smallest, shippable slice of work toward completing the spec.
 
-## When to Use This Phase
+## When to Use
 - After spec is complete
 - After a slice has been approved
-- When resuming work (check what's done, plan what's next)
+- When resuming work
 
-## Allowed Changes
-- May read ANY files to understand context
-- May present plans to the user
+## Scope
+- **May read**: Any files to understand context
+- **May present**: Plans to the user
+- **Must NOT modify**: Any code files, `spec.md`, or `slices/`
 
-- Must NOT modify:
-  - `src/**` (implementation happens in Phase 3)
-  - tests
-  - configuration
-  - dependencies
-  - `spec.md` (only Phase 1 spec-writer can modify)
-  - `slices/` (only Phase 5 approval can add to this)
-  - Any code files
+**The planner only plans. All code changes happen in Phase 3.**
 
-**The planner only plans. All code changes happen in Phase 3 (Implementer).**
-
-## Required Inputs
+## Required Reading
 Before planning, you MUST read:
-- `spec.md` - what needs to be built
-- `slices/` - what's already been completed
-- Current codebase - what exists now
-- **`architecture.md`** - architecture rules and patterns (READ THIS FIRST)
-- Architecture section in `spec.md` - project-specific architectural constraints
+- **`architecture.md`** - Architecture rules (READ THIS FIRST)
+- `spec.md` - What needs to be built
+- Architecture section in `spec.md` - Project-specific constraints
+- `slices/` - What's already completed
+- Current codebase - What exists now
 
 **If requirements are unclear → STOP and ask the user.**
-Never invent behavior or make assumptions about what the user wants.
 
-## Architecture During Planning
-
-When planning slices, follow the guidelines in `architecture.md`. Key considerations:
-
-- **File placement**: Features vs shared vs app buckets
-- **Import boundaries**: No feature-to-feature imports
-- **Code organization**: Colocation, avoid premature abstraction
-- **Verify compliance**: Check that the plan respects architectural rules
-
-**Read `architecture.md` for complete details.**
-
-If uncertain about architecture decisions, note them in "Risks/Open decisions" and discuss with user.
-
-## Process (required)
+## Process
 1. **Read all required inputs** (listed above)
 
 2. **Identify the next logical slice**:
@@ -81,16 +59,12 @@ If uncertain about architecture decisions, note them in "Risks/Open decisions" a
 6. **Get user approval before proceeding**
 
 ## Rules
-- **One small vertical slice only**: Plan one slice at a time, not multiple
-- **Prefer small slices**: 1-3 files per slice
-- **One thing at a time**: Don't mix features, setup, and refactoring in one slice
+- **One slice at a time**: Don't plan multiple slices ahead
+- **Small and focused**: 1-3 files per slice, one clear purpose
 - **Build in order**: Dependencies first, then features that use them
-- **Stay focused**: Each slice should have one clear purpose
-- **Never invent behavior**: If unclear, stop and ask the user
-- **Complete plans only**: Don't produce partial or vague plans
-- **Internal consistency**: Plan must be complete and internally consistent
+- **Never invent behavior**: If unclear, stop and ask
+- **Complete plans only**: Internal consistency is required
 - If a slice feels large, break it down further
-- Don't plan multiple slices ahead - just the next one
 
 ## Stop Condition
 Planning is finished when ALL of these are true:
@@ -103,25 +77,15 @@ Planning is finished when ALL of these are true:
 **Then STOP and present to user. Do NOT proceed to implementation without approval.**
 
 ## Slice Sizing Guidelines
-**Good slice examples:**
-- Project setup (package.json, basic structure)
-- Single component with basic functionality
-- One API endpoint with validation
-- Database schema for one entity
-- Authentication flow (login only)
 
-**Too large (break down):**
-- "Complete user management" → separate into: create user, list users, edit user
-- "Full auth system" → separate into: login, logout, password reset
-- "Dashboard with charts" → separate into: layout, data fetching, charts
+**Good slices** (1-3 files, one focused session):
+- Project setup, single component, one API endpoint, database schema for one entity, auth flow (login only)
+- Has clear done criteria, can be tested, adds user value, doesn't break code, touches all necessary layers
 
-## What Makes a Good Slice
-- Can be implemented in one focused session
-- Has clear done criteria
-- Can be tested (even if manually)
-- Adds value (user can see/test something)
-- Doesn't leave code in broken state
-- One vertical slice (touches all necessary layers)
+**Too large** (break down):
+- "Complete user management" → create, list, edit (separate slices)
+- "Full auth system" → login, logout, password reset (separate)
+- "Dashboard with charts" → layout, data fetching, charts (separate)
 
 ## Plan Presentation Format
 

@@ -1,40 +1,29 @@
 # Phase 3: Implementer
 
 ## Purpose
-Implement **exactly one slice** defined in the approved plan from Phase 2.
+Implement exactly one slice from the approved plan.
 Deliver a fully verified, minimal, production-ready change.
 
-## When to Use This Phase
-- After slice plan has been approved by user
+## When to Use
+- After slice plan approved by user
 - When implementing changes requested during review
 
-## Allowed Changes
-- May create or modify:
-  - `src/**` (project source code)
-  - tests
-  - configuration files (if part of the approved plan)
-  - dependencies (if part of the approved plan)
-  - Any files specified in the approved plan
+## Scope
+- **May modify**: `src/**`, tests, config, dependencies (only as specified in approved plan)
+- **Must NOT modify**: `spec.md` or `slices/`, or files outside approved plan scope
 
-- Must NOT modify:
-  - `spec.md` (only Phase 1 can modify)
-  - `slices/` (only Phase 5 can add to this)
-  - Files outside the approved plan scope
+**Only implement what was approved. No scope creep.**
 
-**Only implement what was approved in the plan. No scope creep.**
-
-## Required Inputs
+## Required Reading
 Before coding, you MUST read:
 - The approved plan from Phase 2
-- `spec.md` - product requirements
-- **`architecture.md`** - architecture rules and patterns
-- Architecture section in `spec.md` - project-specific rules
+- **`architecture.md`** - Architecture rules
+- `spec.md` - Product requirements + Architecture section (project-specific rules)
 - Relevant existing code to understand patterns
 
-**If the plan is missing, unclear, or incomplete → STOP and ask the user.**
-Do not improvise requirements or make assumptions.
+**If the plan is unclear or incomplete → STOP and ask.**
 
-## Process (required)
+## Process
 1. **Read all required inputs** (listed above)
 2. Read relevant existing code to understand patterns
 3. Implement the slice:
@@ -52,30 +41,12 @@ Do not improvise requirements or make assumptions.
 
 ## Architecture Compliance
 
-**Read `architecture.md` for complete architecture guidelines.**
+**Read `architecture.md` for complete guidelines.**
 
-Key points to follow during implementation:
-
-### File Placement
-- Feature-specific code → inside that feature
-- Code used by 2+ features → `src/shared`
-- App-level concerns → `src/app`
-- No new top-level buckets without user approval
-
-### Import Boundaries (Critical)
-- ❌ Features must NOT import other features
-- ✅ Features may import from `shared/` and `app/`
-- ❌ Shared must NOT import from features
-- Violations = review failures
-
-**See `architecture.md` for complete details.**
-
-## Scope of Work
-- **Implement only what is listed in the approved plan**
-- Do not extend scope or add "nice-to-have" features
-- Do not refactor unrelated code
-- Keep diffs minimal and localized to the slice
-- If you notice something else that needs fixing, note it for a future slice
+Key points:
+- **File placement**: Features vs shared vs app buckets (no new top-level buckets)
+- **Import boundaries**: ❌ No feature-to-feature imports
+- **Avoid premature abstraction**: Only create shared code when used by 2+ features
 
 ## Testing Requirements
 You MUST:
@@ -86,22 +57,35 @@ You MUST:
 
 ## Rules
 - **Follow the plan exactly**: Only implement what was approved
-- **Follow the architecture**: Respect bucket rules and import boundaries
-- **Match existing patterns**: Read similar code first, follow established conventions
+- **Follow architecture**: Respect boundaries from `architecture.md`
+- **Match existing patterns**: Read similar code first, follow conventions
 - **Keep it simple**: No premature optimization or abstraction
-- **Stay focused**: Don't add extras, improvements, or refactors beyond the plan
-- **No improvisation**: If unclear or blocked, stop and ask the user
+- **Stay focused**: No extras, improvements, or refactors beyond the plan
+- **No improvisation**: If unclear or blocked, stop and ask
 
-## Code Quality Standards
-- **Clean imports**: Only import what you need
-- **No dead code**: Don't leave commented-out code or unused functions
-- **No unused exports**: Remove exports that aren't actually used
-- **Meaningful names**: Use clear, descriptive variable/function names
-- **Consistent style**: Match the existing codebase style
-- **Error handling**: Handle errors appropriately (but don't over-engineer)
-- **Comments**: Only where logic isn't self-evident
-- **Doc comments**: Exported APIs must include concise documentation comments
-- **Configuration**: Defaults must live in the proper config location (see `architecture.md`)
+## Code Quality
+- **Functions**: ≤ 50 lines, cyclomatic complexity ≤ 8, ≤ 5 positional params
+- **Lines**: 100-char max, no relative `..` imports
+- **Naming**: Clear, descriptive names that reduce need for comments
+- **Imports**: Only what you need, no unused exports or dead code
+- **Style**: Consistent with codebase
+- **Error handling**: Fail fast with clear messages, never swallow exceptions silently
+- **Type checking**: All code must pass (Python: `mypy --strict`, TypeScript: `tsc --noEmit`)
+- **Doc comments**: Google-style on non-trivial public APIs
+- **Comments**: Only where logic isn't self-evident (no obvious, repeated, or commented-out code)
+- **Configuration**: In proper location per `architecture.md`, no hardcoded paths
+
+## Additional Standards
+
+**Bash**: Use strict mode (`#!/bin/bash` + `set -euo pipefail`). Lint with `shellcheck` and `shfmt`.
+
+**Git**: Imperative mood, ≤72 char subject. One logical change per commit. Never amend/rebase pushed commits.
+
+**Secrets**: Never commit secrets. Use gitignored `.env` files and environment variables.
+
+**Testing**: Mock boundaries (I/O, time, external services), not logic or pure functions. Verify tests fail when code breaks. Test file placement: Python uses `tests/`, Node/TS uses colocated `*.test.ts`. Integration tests when in doubt.
+
+**CI**: No scheduled runs without code changes.
 
 ## Completion Criteria
 The slice is complete ONLY when ALL of these are true:
@@ -123,14 +107,16 @@ When all completion criteria are satisfied:
 - **STOP** - Do not optimize prematurely
 - Proceed to Phase 4 (Review)
 
-## Common Pitfalls to Avoid
-- ❌ Don't refactor existing code unless that's the slice goal
-- ❌ Don't add features beyond the approved plan
-- ❌ Don't create abstractions for one-time use
-- ❌ Don't add configuration for hypothetical future needs
-- ❌ Don't skip tests if the existing codebase has them
-- ❌ Don't change architecture patterns without discussing first
-- ❌ Don't remove tests unless the plan explicitly requires it
+## Common Pitfalls (Avoid These)
+- Refactoring code not in the approved plan
+- Adding features beyond the plan or speculative "might be useful" functionality
+- Creating abstractions for one-time use (wait until code is written 3+ times)
+- Adding config for hypothetical future needs
+- Adding unnecessary dependencies (each is attack surface + maintenance burden)
+- Documenting or validating features that aren't implemented yet (no phantom features)
+- Skipping tests when codebase has them
+- Changing architecture patterns without discussion
+- Using `type: ignore` or skipping type checks without justification
 
 ## Security Considerations
 Be careful to avoid:
@@ -142,4 +128,3 @@ Be careful to avoid:
 - OWASP Top 10 vulnerabilities
 
 **If you notice security issues: fix them immediately OR note them for the next slice.**
-

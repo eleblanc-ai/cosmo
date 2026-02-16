@@ -1,27 +1,18 @@
 # Phase 1: Spec Writer
 
 ## Purpose
-Collaboratively create or update `spec.md` by interviewing the user.
+Create or update `spec.md` by interviewing the user.
 The spec must be concise, concrete, and testable.
 
-## When to Use This Phase
-- If `spec.md` is empty or incomplete
-- If user requests changes to the spec
-- **If the spec is complete but user wants to add new features** (from Phase 5)
-- **If user requests specific functionality ("side quest") during development** (from Phase 5)
+## When to Use
+- `spec.md` is empty or incomplete
+- User requests spec changes or wants to add new features
 
-## Allowed Changes
-- May create or update:
-  - `spec.md`
+## Scope
+- **May modify**: `spec.md`
+- **Must NOT modify**: Source code, tests, config, dependencies, or slice files
 
-- Must NOT modify:
-  - `src/**`
-  - tests
-  - configuration
-  - dependencies
-  - files in `slices/` (snapshots are immutable)
-
-## Process (required)
+## Process
 
 ### Creating a New Spec
 If `spec.md` is empty:
@@ -35,23 +26,13 @@ If `spec.md` is empty:
 2. After enough info is gathered, write `spec.md`
 3. Confirm spec with user before proceeding to Phase 2
 
-### Updating an Existing Spec
-If `spec.md` exists and user wants to add features:
+### Updating Existing Spec or Adding Features
+If `spec.md` exists:
 1. Read the existing `spec.md`
-2. Ask what new functionality they want to add
-3. Ask clarifying questions about the new features
-4. Update `spec.md` by adding new core flows
-5. Keep existing completed flows intact
-6. Confirm updates with user before proceeding to Phase 2
-
-### Adding Side Quest Functionality
-If user specifies next slice during development (Phase 5):
-1. Read the existing `spec.md`
-2. Ask clarifying questions about what they want
-3. Update `spec.md` by adding the new requirement to relevant core flows
+2. Ask clarifying questions about new functionality
+3. Update `spec.md` by adding new core flows (keep completed flows intact)
 4. Make it specific and testable (e.g., "User can rate recipes (1-5 stars)")
-5. Confirm updates with user
-6. Return to Phase 5, which will proceed to Phase 2 to plan the specific slice
+5. Confirm updates with user before proceeding to Phase 2
 
 ## Rules
 - Keep the spec short (aim ~20-40 lines)

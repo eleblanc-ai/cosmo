@@ -1,39 +1,29 @@
 # Phase 4: Reviewer
 
 ## Purpose
-Review the implementation as a strict senior engineer.
-Automatically fix quality issues. Escalate behavior issues back to Phase 3.
+Review implementation as a strict senior engineer.
+Automatically fix quality issues. Escalate behavior issues to Phase 3.
 
-## When to Use This Phase
-- After implementation (Phase 3) is complete
-- Before presenting to user for approval
+## When to Use
+- After implementation (Phase 3) complete
+- Before presenting to user
 
-## Allowed Changes
-- May modify:
-  - Code files to fix **quality issues** (unused imports, lint errors, formatting, etc.)
-  - Tests to fix test issues (not behavior)
-
-- May run:
-  - Any verification commands (`npm test`, `npm run lint`, `npm run build`, etc.)
-
-- Must NOT modify:
-  - `spec.md` (only Phase 1 can modify)
-  - `slices/` (only Phase 5 can add to this)
-  - Files outside the current slice scope
-  - **Core functionality or behavior** (only fix quality issues)
+## Scope
+- **May modify**: Code files to fix quality issues (unused imports, lint, formatting)
+- **May run**: Verification commands
+- **Must NOT modify**: `spec.md`, `slices/`, files outside slice scope, or core functionality
 
 **Fix quality issues automatically. If behavior needs changing, go back to Phase 3.**
 
-## Required Inputs
-Before reviewing, you MUST read:
-- `spec.md` - product requirements
-- **`architecture.md`** - architecture rules and review criteria
-- Architecture section in `spec.md` - project-specific rules
+## Required Reading
+Before reviewing:
+- **`architecture.md`** - Architecture rules and review criteria
+- `spec.md` - Product requirements + Architecture section
 - The approved plan from Phase 2
-- The git diff (all changed files)
-- Test output from `npm run verify` (if available)
+- Git diff (all changed files)
+- Test output from `npm run verify`
 
-## Process (required)
+## Process
 1. **Read all required inputs** (listed above)
 
 2. **Run automated checks** (if they exist):
@@ -118,36 +108,35 @@ Review the implementation against these criteria:
 - ✓ No unused exports or imports
 - ✓ No dead code or commented-out code
 - ✓ Naming is clear and descriptive
-- ✓ Minimal complexity (no premature abstraction)
+- ✓ Minimal complexity (≤ 8 cyclomatic, ≤ 50 lines/function)
 - ✓ Code follows existing patterns
+- ✓ All code passes type checking
+- ✓ No hardcoded paths or phantom features
 
 **If violated**: Fix immediately (quality issue)
 
 ## Rules
-- **Be a strict senior engineer**: Evaluate all criteria rigorously
+- **Be strict**: Evaluate all criteria rigorously
 - **Fix quality issues immediately**: Unused imports, formatting, etc.
-- **Never skip review**: Always complete the full checklist
-- **Be specific**: When going back to Phase 3, provide exact files/lines/symbols
-- **Don't change behavior**: Only fix quality issues, not functionality
+- **Never skip review**: Complete full checklist
+- **Be specific**: When escalating, provide exact files/lines/symbols
+- **Don't change behavior**: Only fix quality, not functionality
 - **Security first**: Security violations = immediate escalation
 
 ## What Gets Auto-Fixed vs. Escalated
 
-### Auto-Fix (quality issues):
-- Unused imports or exports
-- Lint errors, formatting issues
-- Obvious typos in variable names
-- Missing trailing commas, semicolons (if project uses them)
+**Auto-Fix** (quality issues):
+- Unused imports/exports, lint errors, formatting
+- Typos in variable names
 - Simple doc comment additions
 
-### Escalate to Phase 3 (behavior issues):
+**Escalate to Phase 3** (behavior issues):
 - Scope creep or out-of-plan features
 - Architecture violations (import boundaries, file placement)
 - Missing or inadequate tests
 - Behavior bugs or regressions
 - Silent API changes
 - Configuration not centralized
-- Substantial missing documentation
 
 ## When Escalating to Phase 3
 
