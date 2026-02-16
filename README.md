@@ -29,15 +29,18 @@ Each completed slice gets documented in `slices/SLICE-###-description.md` so the
    - Name your new project (e.g., "my-app")
    - Clone your new repo
 
-2. **Set up your React project with Vite:**
+2. **Run the initialization script:**
 
    ```bash
    cd my-app
-   npm create vite@latest . -- --template react-ts
-   npm install
+   chmod +x cosmo/init.sh
+   ./cosmo/init.sh
    ```
 
-   Note: Vite will warn about existing files but will proceed anyway when you confirm.
+   This will:
+   - Create a Vite + React + TypeScript project
+   - Install dependencies
+   - Copy Cosmo configuration files to the root directory
 
 3. **Open in your LLM-enabled IDE**
 
