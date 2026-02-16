@@ -138,6 +138,15 @@ Plan includes ALL of these:
 - [ ] If creating shared code, it's actually used by 2+ features
 - [ ] Maintains or improves architecture
 
+### Stop Condition
+Planning is finished when ALL of these are true:
+- [ ] The slice is minimal and clear
+- [ ] User-visible outcome is defined ("User can ___")
+- [ ] Verification is defined (how to test/verify)
+- [ ] No unanswered architectural conflicts remain
+- [ ] Plan is complete and internally consistent
+- [ ] Agent STOPS and presents to user (doesn't proceed without approval)
+
 ### Communication
 - [ ] Starts with: `## 📋 Phase 2: Planning Next Slice`
 - [ ] Ends with question like:
@@ -220,8 +229,17 @@ Checks for and avoids:
 - [ ] XSS vulnerabilities
 - [ ] SQL injection
 - [ ] Insecure authentication/authorization
-- [ ] Exposed secrets or credentials
+- [ ] Exposed secrets or credentials (use .env files)
 - [ ] OWASP Top 10 vulnerabilities
+
+### Additional Standards
+Code quality requirements:
+- [ ] **Error handling**: Fails fast with clear messages, never swallows exceptions silently
+- [ ] **Type checking**: All code passes strict type checking (Python: `mypy --strict`, TypeScript: `tsc --noEmit`)
+- [ ] **Bash scripts**: Use strict mode (`#!/bin/bash` + `set -euo pipefail`), lint with `shellcheck` and `shfmt`
+- [ ]  **Git commits**: Imperative mood, ≤72 char subject, one logical change per commit, never amend/rebase pushed commits
+- [ ] **Secrets handling**: Never commit secrets, use gitignored `.env` files and environment variables
+- [ ] **CI**: No scheduled runs without code changes
 
 ### Communication
 - [ ] Starts with: `## 🔨 Phase 3: Implementing [slice name]`
@@ -294,6 +312,16 @@ Agent must read:
 - [ ] Test patterns match existing codebase
 - [ ] All tests pass
 
+### Review Checklist - Cleanliness
+- [ ] No unused exports or imports
+- [ ] No dead code or commented-out code
+- [ ] Naming is clear and descriptive
+
+### Review Checklist - Documentation
+- [ ] Exported components/hooks/utilities have concise doc comments
+- [ ] Plan updated if scope changed
+- [ ] Spec updated if requirements changed (requires user approval)
+
 ### Review Checklist - Configuration
 - [ ] Defaults are centralized
 - [ ] New options are documented
@@ -315,6 +343,23 @@ Agent must read:
 - [ ] Authentication/authorization secure
 - [ ] No exposed secrets
 - [ ] OWASP Top 10 considered
+
+### What Gets Auto-Fixed vs Escalated
+
+**Auto-fix** (quality issues - agent fixes immediately):
+- [ ] Unused imports/exports
+- [ ] Lint errors
+- [ ] Formatting issues
+- [ ] Typos in variable names
+- [ ] Simple doc comment additions
+
+**Escalate to Phase 3** (behavior issues - must go back):
+- [ ] Bugs or incorrect logic
+- [ ] Missing tests
+- [ ] Scope creep (features not in plan)
+- [ ] Architecture violations
+- [ ] Security vulnerabilities
+- [ ] Breaking changes
 
 ### Decision Making
 - [ ] If ALL checks pass → Proceeds to Phase 5
@@ -642,6 +687,25 @@ Use these scenarios to verify behavior:
    - [ ] Understands what's been completed
    - [ ] Starts in Phase 2 (planning next slice)
    - [ ] Doesn't lose context
+
+---
+
+## 🔄 Reset Script Behavior
+
+Verify reset.sh functionality:
+
+### Reset Script (`cosmo/reset.sh`)
+- [ ] Restores clean `spec.md` from `templates/spec.md`
+- [ ] Restores clean `architecture.md` from `templates/architecture.md`
+- [ ] Deletes all `SLICE-*.md` files from `slices/` directory
+- [ ] Keeps `slices/README.md` intact
+- [ ] Provides confirmation messages for each action
+- [ ] Allows starting fresh while preserving Cosmo structure
+
+### When to Use Reset
+- [ ] Starting a completely new project in the same repo
+- [ ] Clearing all work to begin again
+- [ ] Testing Cosmo from scratch
 
 ---
 
