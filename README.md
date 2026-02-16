@@ -1,60 +1,60 @@
 # Cosmo
 
-**Coordinated Slice Management Orchestrator** - An AI software development agent that helps you build software in small, user-approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
+**Coordinated Slice Management Orchestrator** - A structured development identity for AI assistants that helps you build software in your IDE through small, user-approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
+
+Works in any IDE with an LLM assistant (tested with GitHub Copilot in VSCode).
 
 ## How It Works
 
-Cosmo loops through 5 phases:
-1. **Interview** → Define product spec
-2. **Plan** → Identify next small increment
-3. **Implement** → Write the code
-4. **Review** → Run tests, check quality
-5. **Approve** → Present for approval, then iterate or move to next slice
+Cosmo is defined by a set of markdown files that live in your project. Your LLM reads `cosmo.md` and loops through 5 phases:
 
-## Quick Start
+1. **Interview** → The LLM asks you questions about your project and writes a product spec to `spec.md`. This file becomes the single source of truth for what you're building.
 
-Start a conversation with your AI assistant:
+2. **Plan** → The LLM reads your spec and existing code, then proposes the next small increment (1-3 files). You approve or adjust before any code is written.
 
-```
-Read cosmo.md and follow those instructions.
-```
+3. **Implement** → The LLM writes the code for the approved plan. It follows patterns from your existing codebase and the architecture rules in `architecture.md`.
 
-Cosmo takes over from there.
+4. **Review** → The LLM runs tests, checks for issues, and verifies the implementation works. If there are problems, it fixes them before showing you.
 
-## Using Cosmo
+5. **Approve** → The LLM presents the completed slice to you. You can approve it (moves to next slice), request changes (iterates on current slice), or add to the spec (updates plan).
 
-### Starting a Project
+Each completed slice gets documented in `slices/SLICE-###-description.md` so there's a full audit trail of what was built and why.
 
-1. Tell your AI: "Read cosmo.md and follow those instructions"
-2. Cosmo checks `spec.md`:
-   - Empty → Cosmo interviews you to define your project
-   - Complete → Cosmo starts planning the first slice
-3. Stay in the same conversation - Cosmo loops through all slices until done
+## Getting Started
 
-### During Development
+1. **Clone Cosmo into your project:**
+   ```bash
+   git clone https://github.com/eleblanc-ai/cosmo.git
+   ```
 
-Each slice:
-1. Cosmo plans the next increment (1-3 files)
-2. You approve or adjust
-3. Cosmo implements
-4. Cosmo reviews automatically
-5. Cosmo presents results
+2. **Open your project in an LLM-enabled IDE**
 
-Then you decide:
-- **"Approve"** → Cosmo records slice and asks what's next
-- **"Approve + add X"** → Cosmo updates spec, then plans that slice
-- **"Change Y"** → Cosmo iterates on current slice
+3. **Start a conversation and tell your AI assistant:**
+   ```
+   Read cosmo.md and follow those instructions
+   ```
+
+4. **The LLM reads `cosmo.md` and checks `spec.md`:**
+   - If `spec.md` is empty → Cosmo interviews you to define your project, writes the spec, then starts planning the first slice
+   - If `spec.md` exists → Cosmo reviews it and starts planning the next slice
+
+5. **Stay in the same conversation** - Cosmo will loop through all slices until your project is complete. Each slice goes through plan → implement → review → approve.
+
+After each slice, you can:
+- **"Approve"** → Cosmo saves the slice and plans the next one
+- **"Approve and add [feature]"** → Cosmo updates the spec, then plans that feature
+- **"Change [something]"** → Cosmo iterates on the current slice
 
 ### Resuming After a Break
 
-All progress lives in files (no conversational history).
+All state lives in files (spec, architecture, slices). No conversation history needed.
 
-To resume:
-1. Start a new conversation
+To resume in a new conversation:
+1. Start a fresh conversation in your IDE
 2. Say: "Read cosmo.md and follow those instructions"
-3. Cosmo automatically reads `spec.md`, `slices/`, and your code, then continues
+3. The LLM reads `spec.md`, `slices/`, and your code, then continues where you left off
 
-### Example Flow
+## Example Flow
 
 ```
 You: "Read cosmo.md and follow those instructions"
@@ -75,26 +75,21 @@ Cosmo: [records SLICE-001-project-setup.md]
 ## Project Structure
 
 ```
-cosmo.md             # Agent orchestrator
-architecture.md      # Architecture rules
-spec.md              # Product specification
-phases/              # Detailed phase instructions
+cosmo.md            # LLM orchestrator instructions
+architecture.md     # Architecture rules
+spec.md             # Product specification
+phases/             # Detailed phase instructions
   1-spec-writer.md
   2-planner.md
   3-implementer.md
   4-reviewer.md
   5-approval.md
-slices/              # Completed work history
+slices/             # Completed work history
   SLICE-001-*.md
   SLICE-002-*.md
-templates/           # Clean templates
-reset.sh             # Restore templates
+templates/          # Clean templates
+reset.sh            # Restore templates
 ```
-
-## Using Cosmo
-
-This repo contains the Cosmo framework. Working files (`spec.md`, `slices/`) are gitignored so you can use Cosmo directly here or clone for separate projects.
-
 ## Resetting
 
 To clear and start fresh:
@@ -111,8 +106,8 @@ To clear and start fresh:
 
 ## Files
 
-- **cosmo.md** - High-level orchestrator for the agent
+- **cosmo.md** - High-level orchestrator instructions for the LLM
 - **architecture.md** - Single source of truth for code organization
 - **phases/** - Detailed rules for each phase
-- **spec.md** - Product spec (Cosmo fills out by interviewing you)
+- **spec.md** - Product spec (the LLM fills out by interviewing you)
 - **slices/** - History of completed work
