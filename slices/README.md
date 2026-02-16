@@ -1,6 +1,6 @@
 # Slices
 
-This directory tracks completed work slices. IRIS creates files here as work is approved.
+This directory tracks completed work slices. Cosmo creates files here as work is approved.
 
 ## Format
 

@@ -1,6 +1,6 @@
 # Architecture Guidelines
 
-This file defines the architecture rules that IRIS follows when planning, implementing, and reviewing code.
+This file defines the architecture rules that Cosmo follows when planning, implementing, and reviewing code.
 
 ## Buckets (Folder Structure)
 

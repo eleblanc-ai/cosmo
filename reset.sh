@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# IRIS Reset Script
+# Cosmo Reset Script
 # Restores clean templates and clears completed slices
 
-echo "Resetting IRIS to clean state..."
+echo "Resetting Cosmo to clean state..."
 
 # Restore template files
 cp templates/spec.md spec.md
@@ -16,4 +16,4 @@ echo "✓ spec.md restored"
 echo "✓ architecture.md restored"
 echo "✓ Completed slices cleared"
 echo ""
-echo "IRIS is ready for a fresh start!"
+echo "Cosmo is ready for a fresh start!"
