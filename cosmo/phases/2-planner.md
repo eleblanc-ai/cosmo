@@ -78,6 +78,8 @@ Planning is finished when ALL of these are true:
 
 ## Slice Sizing Guidelines
 
+A slice is a small, focused increment of work—like adding a login button, creating a user profile page, or implementing a search feature. 
+
 **Good slices** (1-3 files, one focused session):
 - Project setup, single component, one API endpoint, database schema for one entity, auth flow (login only)
 - Has clear done criteria, can be tested, adds user value, doesn't break code, touches all necessary layers

@@ -1,10 +1,7 @@
 # Working files (generated during experimentation)
-spec.md
-architecture.md
-slices/SLICE-*.md
-
-# Test projects
-your-project/
+cosmo/spec.md
+cosmo/architecture.md
+cosmo/slices/SLICE-*.md
 
 # OS files
 .DS_Store

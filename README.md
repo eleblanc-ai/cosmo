@@ -1,14 +1,14 @@
-# Cosmo
+# 🛸 Cosmo
 
 Meet Cosmo (**Co**ordinated **S**lice **M**anagement **O**rchestrator)!
 
-Cosmo is a software development identity for AI assistants that helps you build React web apps in your IDE through small, user-approved slices. Cosmo coordinates five phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
+Cosmo is a software development "identity" for AI assistants that helps you build React web apps in your IDE through small, user-approved slices. A slice is a small, focused increment of work—like adding a login button, creating a user profile page, or implementing a search feature. Each slice goes through all five phases before moving to the next one. Cosmo coordinates these phases (spec, plan, implement, review, approve) to keep work scoped, testable, and auditable.
 
 Theoretically works in any IDE with an LLM assistant (tested with GitHub Copilot in VSCode).
 
 ## How It Works
 
-Cosmo is defined by a set of markdown files that live in your project. Your LLM reads `cosmo.md` and loops through 5 phases:
+The Cosmo idenity is defined by a set of markdown files that live in your project. Your LLM reads `cosmo.md` and loops through 5 phases:
 
 1. **Interview** → The LLM asks you questions about your project and writes a product spec to `spec.md`. This file becomes the single source of truth for what you're building.
 
@@ -24,23 +24,30 @@ Each completed slice gets documented in `slices/SLICE-###-description.md` so the
 
 ## Getting Started
 
-1. **Clone Cosmo into your project:**
+1. **Use this repo as a template to create your project:**
+   - Click the green "Use this template" button on GitHub
+   - Name your new project (e.g., "my-app")
+   - Clone your new repo
+
+2. **Set up your React project:**
    ```bash
-   git clone https://github.com/eleblanc-ai/cosmo.git
+   cd my-app
+   npx create-react-app . --template typescript
+   # or: npm create vite@latest . -- --template react-ts
    ```
 
-2. **Open your project in an LLM-enabled IDE**
+3. **Open in your LLM-enabled IDE**
 
-3. **Start a conversation and tell your AI assistant:**
+4. **Start a conversation and tell your AI assistant:**
    ```
-   Read cosmo.md and follow those instructions
+   Read cosmo/cosmo.md and follow those instructions
    ```
 
-4. **The LLM reads `cosmo.md` and checks `spec.md`:**
+5. **The LLM reads `cosmo/cosmo.md` and checks `cosmo/spec.md`:**
    - If `spec.md` is empty → Cosmo interviews you to define your project, writes the spec, then starts planning the first slice
    - If `spec.md` exists → Cosmo reviews it and starts planning the next slice
 
-5. **Stay in the same conversation** - Cosmo will loop through all slices until your project is complete. Each slice goes through plan → implement → review → approve.
+6. **Stay in the same conversation** - Cosmo will loop through all slices until your project is complete. Each slice goes through plan → implement → review → approve.
 
 After each slice, you can:
 - **"Approve"** → Cosmo saves the slice and plans the next one
@@ -53,13 +60,13 @@ All state lives in files (spec, architecture, slices). No conversation history n
 
 To resume in a new conversation:
 1. Start a fresh conversation in your IDE
-2. Say: "Read cosmo.md and follow those instructions"
-3. The LLM reads `spec.md`, `slices/`, and your code, then continues where you left off
+2. Say: "Read cosmo/cosmo.md and follow those instructions"
+3. The LLM reads `cosmo/spec.md`, `cosmo/slices/`, and your code, then continues where you left off
 
 ## Example Flow
 
 ```
-You: "Read cosmo.md and follow those instructions"
+You: "Read cosmo/cosmo.md and follow those instructions"
 Cosmo: "spec.md is empty. What is the goal of your project?"
 You: "A markdown note-taking app"
 Cosmo: [interviews, writes spec.md]
@@ -77,25 +84,32 @@ Cosmo: [records SLICE-001-project-setup.md]
 ## Project Structure
 
 ```
-cosmo.md            # LLM orchestrator instructions
-architecture.md     # Architecture rules
-spec.md             # Product specification
-phases/             # Detailed phase instructions
-  1-spec-writer.md
-  2-planner.md
-  3-implementer.md
-  4-reviewer.md
-  5-approval.md
-slices/             # Completed work history
-  SLICE-001-*.md
-  SLICE-002-*.md
-templates/          # Clean templates
-reset.sh            # Restore templates
+my-app/
+├── cosmo/
+│   ├── cosmo.md            # LLM orchestrator instructions
+│   ├── architecture.md     # Architecture rules
+│   ├── spec.md             # Product specification
+│   ├── phases/             # Detailed phase instructions
+│   │   ├── 1-spec-writer.md
+│   │   ├── 2-planner.md
+│   │   ├── 3-implementer.md
+│   │   ├── 4-reviewer.md
+│   │   └── 5-approval.md
+│   ├── slices/             # Completed work history
+│   │   ├── SLICE-001-*.md
+│   │   └── SLICE-002-*.md
+│   ├── templates/          # Clean templates
+│   └── reset.sh            # Restore templates
+├── src/                    # Your React app
+├── public/
+├── package.json
+└── node_modules/
 ```
 ## Resetting
 
 To clear and start fresh:
 ```bash
+cd cosmo
 ./reset.sh  # Restores templates, deletes slices
 ```
 
@@ -108,8 +122,8 @@ To clear and start fresh:
 
 ## Files
 
-- **cosmo.md** - High-level orchestrator instructions for the LLM
-- **architecture.md** - Single source of truth for code organization
-- **phases/** - Detailed rules for each phase
-- **spec.md** - Product spec (the LLM fills out by interviewing you)
-- **slices/** - History of completed work
+- **cosmo/cosmo.md** - High-level orchestrator instructions for the LLM
+- **cosmo/architecture.md** - Single source of truth for code organization
+- **cosmo/phases/** - Detailed rules for each phase
+- **cosmo/spec.md** - Product spec (the LLM fills out by interviewing you)
+- **cosmo/slices/** - History of completed work
