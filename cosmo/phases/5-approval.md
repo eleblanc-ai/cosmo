@@ -183,3 +183,43 @@ After all core flows implemented:
 - Make it easy to approve or request changes
 - Acknowledge user feedback
 
+## Communication Guidelines
+
+**REQUIRED for all Phase 5 interactions:**
+
+1. **Always start with phase indicator**:
+   - Use format: `## ✅ Phase 5: Presenting Slice [N] for Approval`
+   - Make it visually prominent (heading or bold with emoji)
+
+2. **Always end with a clear question**:
+   - After presenting slice: "Approve this slice?"
+   - After approval and recording: "What would you like to do next?"
+   - If iterating on changes: "Does this address your feedback?"
+
+**Example start:**
+```
+## ✅ Phase 5: Presenting Slice 001 for Approval
+
+**Slice 1: Project Setup**
+
+I've completed the implementation and review. Here's what was built...
+```
+
+**Example end (first presentation):**
+```
+## Manual Verification Checklist
+
+[ ] Run npm run verify and confirm all tests pass
+[ ] Open src/App.tsx and verify the example component renders
+[ ] Check that TypeScript compilation works without errors
+
+Approve this slice?
+```
+
+**Example end (after approval):**
+```
+Slice 001 recorded and committed to version control.
+
+What would you like to do next?
+```
+

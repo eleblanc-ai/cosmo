@@ -1,5 +1,7 @@
 # Phase 3: Implementer
 
+**⚠️ You are in Phase 3. ONLY implement the approved plan. Do NOT respond to other requests or do work outside this phase.**
+
 ## Purpose
 Implement exactly one slice from the approved plan.
 Deliver a fully verified, minimal, production-ready change.
@@ -10,7 +12,7 @@ Deliver a fully verified, minimal, production-ready change.
 
 ## Scope
 - **May modify**: `src/**`, tests, config, dependencies (only as specified in approved plan)
-- **Must NOT modify**: `spec.md` or `slices/`, or files outside approved plan scope
+- **Must NOT modify**: `cosmo/spec.md` or `cosmo/slices/`, or files outside approved plan scope
 
 **Only implement what was approved. No scope creep.**
 
@@ -18,7 +20,7 @@ Deliver a fully verified, minimal, production-ready change.
 Before coding, you MUST read:
 - The approved plan from Phase 2
 - **`architecture.md`** - Architecture rules
-- `spec.md` - Product requirements + Architecture section (project-specific rules)
+- `cosmo/spec.md` - Product requirements + Architecture section (project-specific rules)
 - Relevant existing code to understand patterns
 
 **If the plan is unclear or incomplete → STOP and ask.**
@@ -34,8 +36,10 @@ Before coding, you MUST read:
 
 4. **Verify your work** (mandatory):
    - Run `npm run verify` (or equivalent from spec.md)
+   - **ALL checks must pass**: type-check, lint, and tests
    - If verification fails: fix, rerun, repeat until passing
-   - **Completion is impossible while verification fails**
+   - **You CANNOT proceed to Phase 4 while verification fails**
+   - **No manual verification** - only automated `npm run verify` counts
 
 5. After verification passes, proceed to Phase 4 (Review)
 
@@ -54,6 +58,7 @@ You MUST:
 - **Ensure regression safety** for existing behavior
 - **Never remove tests** unless explicitly part of the approved plan
 - Tests should match the existing test patterns in the codebase
+- **If no tests exist yet** (first slice): Set up testing infrastructure per spec.md and add basic tests
 
 ## Rules
 - **Follow the plan exactly**: Only implement what was approved
@@ -92,6 +97,7 @@ The slice is complete ONLY when ALL of these are true:
 - ✓ Implementation matches the approved plan
 - ✓ `npm run verify` passes (or equivalent)
 - ✓ All tests pass (existing + new)
+- ✓ **Tests exist for all new functionality** (no untested code)
 - ✓ Diff is minimal and scoped to the slice
 - ✓ Architecture boundaries respected
 - ✓ No unused imports, exports, or dead code
@@ -114,7 +120,7 @@ When all completion criteria are satisfied:
 - Adding config for hypothetical future needs
 - Adding unnecessary dependencies (each is attack surface + maintenance burden)
 - Documenting or validating features that aren't implemented yet (no phantom features)
-- Skipping tests when codebase has them
+- **Skipping tests** - Every slice with code changes needs tests
 - Changing architecture patterns without discussion
 - Using `type: ignore` or skipping type checks without justification
 
@@ -128,3 +134,30 @@ Be careful to avoid:
 - OWASP Top 10 vulnerabilities
 
 **If you notice security issues: fix them immediately OR note them for the next slice.**
+
+## Communication Guidelines
+
+**REQUIRED for Phase 3:**
+
+1. **Always start with phase indicator**:
+   - Use format: `## 🔨 Phase 3: Implementing [slice name]`
+   - Make it visually prominent (heading or bold with emoji)
+
+2. **Phase 3 does NOT end with a question to the user**:
+   - This phase proceeds directly to Phase 4 (Review) after implementation is complete
+   - After completing implementation and running `npm run verify` successfully, immediately proceed to Phase 4
+   - Read `phases/4-reviewer.md` and begin review
+
+**Example start:**
+```
+## 🔨 Phase 3: Implementing Project Setup
+
+I'm implementing the approved plan. Let me read the existing codebase to understand patterns...
+```
+
+**When complete:**
+```
+Implementation complete. All tests passing with npm run verify.
+
+Proceeding to Phase 4 (Review)...
+```

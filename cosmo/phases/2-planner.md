@@ -1,5 +1,7 @@
 # Phase 2: Planner
 
+**⚠️ You are in Phase 2. ONLY plan the next slice. Do NOT implement code or do work outside this phase.**
+
 ## Purpose
 Identify the next smallest, shippable slice of work toward completing the spec.
 
@@ -11,16 +13,16 @@ Identify the next smallest, shippable slice of work toward completing the spec.
 ## Scope
 - **May read**: Any files to understand context
 - **May present**: Plans to the user
-- **Must NOT modify**: Any code files, `spec.md`, or `slices/`
+- **Must NOT modify**: Any code files, `cosmo/spec.md`, or `cosmo/slices/`
 
 **The planner only plans. All code changes happen in Phase 3.**
 
 ## Required Reading
 Before planning, you MUST read:
 - **`architecture.md`** - Architecture rules (READ THIS FIRST)
-- `spec.md` - What needs to be built
-- Architecture section in `spec.md` - Project-specific constraints
-- `slices/` - What's already completed
+- `cosmo/spec.md` - What needs to be built
+- Architecture section in `cosmo/spec.md` - Project-specific constraints
+- `cosmo/slices/` - What's already completed
 - Current codebase - What exists now
 
 **If requirements are unclear → STOP and ask the user.**
@@ -28,19 +30,28 @@ Before planning, you MUST read:
 ## Process
 1. **Read all required inputs** (listed above)
 
-2. **Identify the next logical slice**:
+2. **Check if this is the first slice**:
+   - If no slices exist yet, the first slice MUST include:
+     - Project setup (folder structure, config)
+     - Basic example component/function
+     - Test for the example to verify test infrastructure works
+     - Must achieve: `npm run verify` passes
+   - Note: init script already installed Vitest and created verify script
+   - This ensures all future slices can include tests
+
+3. **Identify the next logical slice**:
    - What are the prerequisites/dependencies?
    - What's the smallest vertical slice that makes progress?
    - What can be tested independently?
    - What provides user-visible value?
 
-3. **Check for refactoring needs**:
+4. **Check for refactoring needs**:
    - Will this slice use any code currently in a feature folder?
    - If yes, that code needs to be promoted to `src/shared` first
    - Plan a separate refactoring slice before the feature slice
    - Example: "Move ConfirmModal from features/auth to src/shared"
 
-4. **Create the slice plan** with these elements:
+5. **Create the slice plan** with these elements:
    - **Name**: 1-3 word description (becomes SLICE-NNN-name.md)
    - **Goal**: One sentence - what this accomplishes
    - **Why now**: Prerequisites, dependencies, logical order
@@ -54,15 +65,15 @@ Before planning, you MUST read:
    - **Verification**: How to verify it works (e.g., `npm run verify`, manual test steps)
    - **Risks/Open decisions**: Any unknowns or tradeoffs to discuss
 
-5. **Verify plan completeness**:
+6. **Verify plan completeness**:
    - Is the slice minimal and clear?
    - Is verification defined?
    - Are there unanswered architectural conflicts?
    - If yes to any → refine the plan
 
-6. **Present the complete plan to user**
+7. **Present the complete plan to user**
 
-7. **Get user approval before proceeding**
+8. **Get user approval before proceeding**
 
 ## Rules
 - **One slice at a time**: Don't plan multiple slices ahead
@@ -140,3 +151,30 @@ Approve this plan?
 - Adjust the plan based on feedback
 - Re-present for approval
 - Stay in Phase 2 until plan is approved
+
+## Communication Guidelines
+
+**REQUIRED for all Phase 2 interactions:**
+
+1. **Always start with phase indicator**:
+   - Use format: `## 📋 Phase 2: Planning Next Slice`
+   - Make it visually prominent (heading or bold with emoji)
+
+2. **Always end with a clear question**:
+   - When presenting a plan: "Approve this plan?"
+   - If clarification needed: "Should I adjust the scope to [option]?"
+   - After feedback: "Does this revised plan work better?"
+
+**Example start:**
+```
+## 📋 Phase 2: Planning Next Slice
+
+I've reviewed cosmo/spec.md and the completed slices. Let me plan the next logical increment...
+```
+
+**Example end:**
+```
+This slice will set up the project structure and verify that our test infrastructure works.
+
+Approve this plan?
+```

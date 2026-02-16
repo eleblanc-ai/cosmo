@@ -1,5 +1,7 @@
 # Phase 4: Reviewer
 
+**⚠️ You are in Phase 4. ONLY review and fix the implementation. Do NOT respond to other requests or do work outside this phase.**
+
 ## Purpose
 Review implementation as a strict senior engineer.
 Automatically fix quality issues. Escalate behavior issues to Phase 3.
@@ -11,14 +13,14 @@ Automatically fix quality issues. Escalate behavior issues to Phase 3.
 ## Scope
 - **May modify**: Code files to fix quality issues (unused imports, lint, formatting)
 - **May run**: Verification commands
-- **Must NOT modify**: `spec.md`, `slices/`, files outside slice scope, or core functionality
+- **Must NOT modify**: `cosmo/spec.md`, `cosmo/slices/`, files outside slice scope, or core functionality
 
 **Fix quality issues automatically. If behavior needs changing, go back to Phase 3.**
 
 ## Required Reading
 Before reviewing:
 - **`architecture.md`** - Architecture rules and review criteria
-- `spec.md` - Product requirements + Architecture section
+- `cosmo/spec.md` - Product requirements + Architecture section
 - The approved plan from Phase 2
 - Git diff (all changed files)
 - Test output from `npm run verify`
@@ -26,11 +28,11 @@ Before reviewing:
 ## Process
 1. **Read all required inputs** (listed above)
 
-2. **Run automated checks** (if they exist):
+2. **Run automated checks** (mandatory):
    - `npm run verify` (or equivalent from spec.md)
-   - `npm test`
-   - `npm run lint`
-   - `npm run build`
+   - **Must pass completely** - if it fails, do NOT proceed
+   - Individual checks: type-check, lint, test
+   - **If any fail**: Go back to Phase 3 to fix
 
 3. **Review as a strict senior engineer** using the checklist below
 
@@ -40,14 +42,14 @@ Before reviewing:
 
 5. **If quality issues found** (unused imports, formatting, etc.):
    - Fix them immediately
-   - Re-run checks
+   - Re-run `npm run verify`
    - Continue review
 
 6. **If behavior issues found** (incorrectness, missing tests, scope creep):
    - **Go back to Phase 3** with specific, actionable feedback
    - Do NOT proceed to Phase 5
 
-7. **Once all issues resolved**:
+7. **Once all issues resolved and `npm run verify` passes**:
    - Proceed to Phase 5 (User Approval)
 
 ## Review Checklist (Must Evaluate All)
@@ -81,13 +83,14 @@ Review the implementation against these criteria:
 **If violated**: Go back to Phase 3 to fix behavior
 
 ### 4. Tests
+- ✓ **Tests exist for ALL new/changed functionality** (no untested code)
 - ✓ New/changed behavior is covered by tests
 - ✓ Tests are meaningful (not just snapshots or no-ops)
 - ✓ No deleted tests without plan approval
 - ✓ Test patterns match existing codebase
 - ✓ All tests pass
 
-**If violated**: Go back to Phase 3 to add/fix tests
+**If violated**: Go back to Phase 3 to add/fix tests. Missing tests = automatic rejection.
 
 ### 5. Configuration
 - ✓ Defaults are centralized
@@ -163,4 +166,43 @@ Go back to Phase 3:
 - ✓ OWASP Top 10 considered
 
 **Security violations = immediate escalation to Phase 3.**
+
+## Communication Guidelines
+
+**REQUIRED for Phase 4:**
+
+1. **Always start with phase indicator**:
+   - Use format: `## 🔍 Phase 4: Reviewing [slice name]`
+   - Make it visually prominent (heading or bold with emoji)
+
+2. **Phase 4 does NOT end with a question to the user**:
+   - This phase proceeds directly to Phase 5 (Approval) after review passes
+   - If issues found: Go back to Phase 3, do NOT ask user
+   - After review passes, immediately proceed to Phase 5
+   - Read `phases/5-approval.md` and present the completed slice
+
+**Example start:**
+```
+## 🔍 Phase 4: Reviewing Project Setup
+
+Running automated checks and reviewing implementation against approved plan...
+```
+
+**When complete and passing:**
+```
+Review complete. All checks passed:
+- ✓ npm run verify passed
+- ✓ Architecture boundaries respected
+- ✓ Tests exist for all functionality
+- ✓ Scope matches approved plan
+
+Proceeding to Phase 5 (Approval)...
+```
+
+**If issues found:**
+```
+Review found issues that need fixing. Returning to Phase 3 to address:
+- [Specific issue 1]
+- [Specific issue 2]
+```
 
