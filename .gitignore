@@ -1,0 +1,18 @@
+# Ignore everything at the root
+/*
+
+# Except the cosmo directory and README
+!cosmo/
+!README.md
+!.gitignore
+
+# Include all files in cosmo by default
+!cosmo/**
+
+# But ignore all files in slices except .gitkeep (to keep directory structure)
+cosmo/slices/*
+!cosmo/slices/.gitkeep
+
+# Ignore the contents of these files (they should remain empty in repo)
+cosmo/current-phase.md
+cosmo/current-plan.md
