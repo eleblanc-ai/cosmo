@@ -1,24 +1,21 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Ignore everything at the root
+/*
 
-node_modules
-dist
-dist-ssr
-*.local
+# Except the cosmo directory, README, and this file
+!cosmo/
+!README.md
+!.gitignore
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Include all files in cosmo by default
+!cosmo/**
+
+# But ignore all files in slices except .gitkeep
+cosmo/slices/*
+!cosmo/slices/.gitkeep
+
+# Ignore runtime state files
+cosmo/current-phase.md
+cosmo/current-plan.md
+
+# Local development only — not part of template
+reset.sh
