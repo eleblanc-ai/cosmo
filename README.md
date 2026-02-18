@@ -8,10 +8,10 @@ Cosmo is a workflow system that guides AI-assisted development through phases of
 
 ## Getting Started
 
-To start working with Cosmo:
+To start working with Cosmo, tell your AI assistant:
 
 ```
-cosmo start
+read cosmo.md and start
 ```
 
 Cosmo will either:
@@ -49,7 +49,7 @@ cosmo/
 
 ## Commands
 
-- `cosmo start` - Start or resume work
+- `read cosmo.md and start` - Start or resume work
 - Tell Cosmo to "pause" or "save progress" to persist your current state
 - Approve plans and implementations when prompted to move forward
 
