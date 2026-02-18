@@ -254,15 +254,16 @@ Present your plan to the user in this format:
 **Risks/Open decisions**:
 - [Any unknowns or tradeoffs to discuss]
 
-Approve this plan?
+Approve this plan? (yes / no / ff to fast-forward through implementation)
 ```
 
 ### Then Ask
-"Approve this plan? (yes/no)"
+"Approve this plan? (yes/no/ff)"
 
 ### Routing
 - No → Phase 2 (continue, update state)
 - Yes → Write approved plan to `cosmo/current-plan.md`, clear `current-phase.md`, then Phase 3
+- ff (fast-forward) → Write approved plan to `cosmo/current-plan.md`, clear `current-phase.md`, then run Phase 3 → Phase 4 without stopping for input between phases. Still announce each phase transition with its phase indicator (`🔨 Phase 3`, `✅ Phase 4`) so the user can see the state machine progressing.
 
 ---
 
