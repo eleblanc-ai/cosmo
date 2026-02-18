@@ -4,7 +4,7 @@
 
 ## What is Cosmo?
 
-Cosmo is a workflow system that guides AI-assisted development through phases of interviewing, planning, implementing, and approving. It breaks large projects into manageable slices while maintaining quality and documentation.
+Cosmo is a software development identity that can be assumed by LLM agents capable of generating code. It provides a structured workflow system that guides AI-assisted development through phases of interviewing, planning, implementing, and approving. It breaks large projects into manageable slices while maintaining quality and documentation.
 
 **Note:** This framework is designed to work with AI coding assistants like Claude (via GitHub Copilot or VSCode extensions) or Codex agents in VSCode.
 
