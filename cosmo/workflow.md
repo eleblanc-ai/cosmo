@@ -312,7 +312,9 @@ Before coding, you MUST read:
    - **You CANNOT proceed to Phase 4 while verification fails**
    - **No manual verification** - only automated verification counts
 
-5. After verification passes, proceed to Phase 4 (Review)
+5. **For slices involving CSS framework setup or styling:** run a production build and confirm that expected utility classes appear in the compiled CSS output. A passing verify command does not cover CSS generation — the stylesheet can be empty while all tests pass. Spot-check the built CSS for a few key class names before proceeding.
+
+6. After verification passes, proceed to Phase 4 (Review)
 
 ### Architecture Compliance
 
