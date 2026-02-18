@@ -80,16 +80,7 @@ The workflow is a guide, not a prison. Just maintain phase awareness.
 "📋 Phase 1: Interview - Writing spec"
 
 ### Do
-Ask questions one at a time. Gather: goals, users, core features, constraints, **and tech stack**. Write to `cosmo/spec.md`.
-
-**Required tech stack questions (must be answered before leaving Phase 1):**
-- Framework and setup (e.g., React + Vite, Next.js, Express, etc.)
-- Language: TypeScript or JavaScript?
-- Styling approach (e.g., Tailwind, CSS modules, etc.) if frontend
-- Folder structure and file naming conventions
-- Test runner and verification command (e.g., `npm run verify`, `vitest`, etc.)
-
-These must be captured in the **Architecture** section of `cosmo/spec.md` so Phase 2 can plan without asking.
+Ask questions one at a time. Gather: goals, users, core features, constraints. Write to `cosmo/spec.md`.
 
 **If updating existing spec:** Review the entire spec for consistency and accuracy before and after applying the change. Ensure the update doesn't conflict with existing requirements, data models, or architectural decisions. Update all affected sections, not just the section most directly related to the request.
 
