@@ -1,15 +1,64 @@
 # Cosmo Workflow: 4-Phase Loop
 
+**Read this file completely before starting work.** This is your primary reference for all phases.
+
+## Table of Contents
+1. [Communication Guidelines](#communication-guidelines) - How to communicate during phases
+2. [State Management](#state-management) - When and what to save
+3. [Plan Management](#plan-management) - Tracking slice iterations
+4. [Phase 1: Interview](#phase-1-interview) - Writing the spec
+5. [Phase 2: Plan](#phase-2-plan) - Planning next slice
+6. [Phase 3: Implement](#phase-3-implement) - Writing and verifying code
+7. [Phase 4: Approval](#phase-4-approval) - Getting user approval
+
+---
+
+## Communication Guidelines
+
+### Phase Indicators
+**Always start responses by stating current phase:**
+- `📋 Phase 1: Interview - Writing spec`
+- `📋 Phase 2: Plan - Planning next slice`
+- `🔨 Phase 3: Implement - Writing code and verifying quality`
+- `✅ Phase 4: Approval - Presenting slice`
+
+### Routing Questions
+**End with clear next-step question:**
+- Phase 1: "Does this spec capture your vision? (yes/no)"
+- Phase 2: "Approve this plan? (yes/no)"
+- Phase 3: No question - Auto-proceed to Phase 4
+- Phase 4: "What next? (1/2)" with options
+
+### Natural Conversation
+You can have natural conversations during any phase:
+- Answer user questions
+- Discuss architectural approaches
+- Explain concepts and decisions
+- Clarify requirements
+
+The workflow is a guide, not a prison. Just maintain phase awareness.
+
+---
+
 ## State Management
 
-**Update `cosmo/current-phase.md` regularly** to enable resuming work:
-- When starting a phase, create/update with current phase number
-- During Phase 1: Save questions asked and remaining questions
-- During Phase 2: Save files examined, approaches considered, draft plans
-- During Phase 3: Save progress checklist, files modified, test status
-- During Phase 4: Save what's ready for approval
-- When user says "pause" or "save": Update state with current progress
-- When completing a phase: Clear the state file (delete it) before moving to next phase
+**Maintain `cosmo/current-phase.md` to enable resuming work at any time.**
+
+### When to Save State
+- User says "pause", "stop", "save progress", or similar
+- Taking a break or ending a session mid-phase
+- Before a long tangent that might lose context
+
+### When to Clear State
+- Completing a phase and moving to the next phase
+- User explicitly requests starting fresh work
+
+### What to Save (per phase)
+**Update regularly during the phase:**
+- Phase 1: Questions asked, answers received, remaining questions, draft spec notes
+- Phase 2: Files examined, approaches considered, current thinking, draft plan
+- Phase 3: Progress checklist, files modified, test status, issues/blockers
+- Phase 4: Slice summary, changes made, test/build results
 
 **Use State Template from `cosmo/templates.md`** for the state file structure. Only fill in the section relevant to current phase.
 
@@ -31,9 +80,20 @@
 "📋 Phase 1: Interview - Writing spec"
 
 ### Do
-Ask questions one at a time. Gather: goals, users, core features, constraints. Write to `cosmo/spec.md`.
+Ask questions one at a time. Gather: goals, users, core features, constraints, **and tech stack**. Write to `cosmo/spec.md`.
 
-**If updating existing spec:** Review current spec, ask what features to add, append to existing requirements.
+**Required tech stack questions (must be answered before leaving Phase 1):**
+- Framework and setup (e.g., React + Vite, Next.js, Express, etc.)
+- Language: TypeScript or JavaScript?
+- Styling approach (e.g., Tailwind, CSS modules, etc.) if frontend
+- Folder structure and file naming conventions
+- Test runner and verification command (e.g., `npm run verify`, `vitest`, etc.)
+
+These must be captured in the **Architecture** section of `cosmo/spec.md` so Phase 2 can plan without asking.
+
+**If updating existing spec:** Review the entire spec for consistency and accuracy before and after applying the change. Ensure the update doesn't conflict with existing requirements, data models, or architectural decisions. Update all affected sections, not just the section most directly related to the request.
+
+**If the user requests something unconventional, technically problematic, or that conflicts with better-established approaches:** Gently point this out and suggest a more conventional or practical alternative. Briefly explain the tradeoff. Ultimately respect the user's decision if they want to proceed anyway.
 
 ### File Rules
 **Must reference:** `cosmo/spec.md` (check if exists)
@@ -51,23 +111,160 @@ Ask questions one at a time. Gather: goals, users, core features, constraints. W
 
 ## Phase 2: Plan
 
-### Say
-"📋 Phase 2: Plan - Planning next slice"
+**⚠️ You are in Phase 2. ONLY plan the next slice. Do NOT implement code or do work outside this phase.**
 
-### Do
-1. Read `cosmo/spec.md` and `cosmo/slices/*` to understand requirements and what's been completed
-2. **Check if spec is complete:**
-   - If all spec features are implemented → Ask user: "All spec features are complete! What would you like to work on next?"
-   - Wait for user input (new features, polish, optimizations, etc.)
-   - If major new features → Suggest updating spec first
-   - If enhancements/polish → Proceed with planning
-3. Identify next small slice (1-3 files)
-4. Write plan with: goal, files, outcome, verification
+### Purpose
+Identify the next smallest, shippable slice of work toward completing the spec.
 
-### File Rules
-**Must reference:** `cosmo/spec.md` (read requirements), `cosmo/slices/*` (confirm what's already done, avoid rework)
-**Can modify:** None (planning only, no file modifications)
-**Cannot modify:** All files (this is planning phase)
+### When to Use
+- After spec is complete
+- After a slice has been approved
+- When resuming work
+
+### Scope
+- **May read**: Any files to understand context
+- **May present**: Plans to the user
+- **Must NOT modify**: Any code files, `cosmo/spec.md`, or `cosmo/slices/`
+
+**The planner only plans. All code changes happen in Phase 3.**
+
+### Required Reading
+Before planning, you MUST read **in this order:**
+1. **`cosmo/architecture.md`** - Universal architecture principles (READ THIS FIRST)
+2. **`cosmo/spec.md`** - Product requirements
+3. **Architecture section in `cosmo/spec.md`** - Project-specific constraints (language, framework, structure)
+4. **`cosmo/slices/*`** - What's already completed
+5. **Current codebase** - What exists now, patterns to follow
+
+**If requirements are unclear → STOP and ask the user.**
+
+### Process
+
+**1. Check if spec is complete:**
+- If all spec features are implemented → Ask user: "All spec features are complete! What would you like to work on next?"
+- Wait for user input (new features, polish, optimizations, etc.)
+- If major new features → Suggest updating spec first
+- If enhancements/polish → Proceed with planning
+
+**2. Check if this is the first slice:**
+- If no slices exist yet, the first slice MUST include:
+  - Project setup (folder structure, dependencies, configuration)
+  - Basic example module with simple functionality
+  - Test for the example to verify test infrastructure works
+  - Must achieve: Verification command passes (from spec.md)
+- This ensures all future slices can include tests
+
+**3. Identify the next logical slice:**
+- What are the prerequisites/dependencies?
+- What's the smallest vertical slice that makes progress?
+- What can be tested independently?
+- What provides user-visible value?
+
+**4. Check for refactoring needs:**
+- Will this slice use any code currently in a feature folder?
+- If yes, that code needs to be promoted to shared first
+- Plan a separate refactoring slice before the feature slice
+- Example: "Move AuthModal from features/admin to src/shared/components"
+
+**5. Create the slice plan** with these elements:
+- **Name**: 1-3 word description (becomes slice-N-name.md)
+- **Goal**: One sentence - what this accomplishes
+- **Why now**: Prerequisites, dependencies, logical order
+- **Scope**:
+  - **In scope**: What will be built in this slice
+  - **Out of scope**: What explicitly won't be included (avoid scope creep)
+- **User-visible outcome**: "User can ___" statement
+- **File map**: Files to create or modify with brief purpose
+- **Data/API assumptions**: Brief notes on data structures or contracts (if relevant)
+- **Tests**: What tests will be added or updated
+- **Verification**: How to verify it works (command + manual steps if needed)
+- **Risks/Open decisions**: Any unknowns or tradeoffs to discuss
+
+**6. Verify plan completeness:**
+- Is the slice minimal and clear?
+- Is verification defined?
+- Are there unanswered architectural conflicts?
+- If yes to any → refine the plan
+
+**7. Present the complete plan to user**
+
+**8. Get user approval before proceeding**
+
+### Slice Sizing Guidelines
+
+A slice is a small, focused increment of work.
+
+**Good slices** (1-3 files, one focused session):
+- Project setup with example and test
+- Single module/component with tests
+- One API endpoint with handlers
+- Database schema for one entity
+- One feature workflow (e.g., login only, not full auth)
+- Has clear done criteria, can be tested, adds user value, doesn't break code
+
+**Refactoring slices** (when needed):
+- Move module from feature to shared (when needed by 2+ features)
+- Extract duplicated logic to shared utility
+- Reorganize folder structure to match architecture
+
+**Too large** (break down):
+- "Complete user management" → create, list, edit (separate slices)
+- "Full auth system" → login, logout, password reset (separate)
+- "Dashboard with visualizations" → layout, data fetching, charts (separate)
+
+### Rules
+- **One slice at a time**: Don't plan multiple slices ahead
+- **Small and focused**: 1-3 files per slice, one clear purpose
+- **Build in order**: Dependencies first, then features that use them
+- **Never invent behavior**: If unclear, stop and ask
+- **Complete plans only**: Internal consistency is required
+- If a slice feels large, break it down further
+
+### Stop Condition
+Planning is finished when ALL of these are true:
+- The slice is minimal and clear
+- User-visible outcome is defined ("User can ___")
+- Verification is defined (how to test/verify)
+- No unanswered architectural conflicts remain
+- Plan is complete and internally consistent
+
+**Then STOP and present to user. Do NOT proceed to implementation without approval.**
+
+### Plan Presentation Format
+
+Present your plan to the user in this format:
+
+```
+## Slice [N]: [1-3 word name]
+
+**Goal**: [One sentence describing what this accomplishes]
+
+**Why now**: [Prerequisites, dependencies, why this is the logical next step]
+
+**Scope**:
+- In scope: [What will be built]
+- Out of scope: [What won't be included]
+
+**User-visible outcome**: User can [do something specific]
+
+**Files**:
+- `path/to/file` (create) - [brief purpose]
+- `path/to/other` (modify) - [what changes]
+
+**Data/API assumptions**: [Any assumptions about data structures or APIs]
+
+**Tests**:
+- [What tests will be added/updated]
+
+**Verification**:
+- Run verification command from spec.md
+- [Any manual verification steps]
+
+**Risks/Open decisions**:
+- [Any unknowns or tradeoffs to discuss]
+
+Approve this plan?
+```
 
 ### Then Ask
 "Approve this plan? (yes/no)"
@@ -80,33 +277,67 @@ Ask questions one at a time. Gather: goals, users, core features, constraints. W
 
 ## Phase 3: Implement
 
-### Say
-"🔨 Phase 3: Implement - Writing code and verifying quality"
+**⚠️ You are in Phase 3. ONLY implement the approved plan. Do NOT respond to other requests or do work outside this phase.**
 
-### Do
-1. Write code per approved plan
-2. Write automated tests covering core functionality:
-   - Unit tests for functions and components
-   - Integration tests for user interactions
-   - Test happy paths and edge cases (empty inputs, validation, etc.)
-3. Run tests until all passing
-4. Run build to verify no errors
-5. Review code quality:
-   - Check scope aligns with approved plan
-   - Verify tests cover key functionality
-   - Ensure code follows project patterns
-   - Fix any obvious issues
+### Purpose
+Implement exactly one slice from the approved plan.
+Deliver a fully verified, minimal, production-ready change.
 
-### File Rules
-**Must reference:** Approved plan from Phase 2
-**Can modify:** Source files (`src/**/*`), test files (`src/**/*.test.*`), config files (`vite.config.js`, `package.json`), test setup (`src/test/setup.js`)
-**Cannot modify:** `cosmo/**/*` (spec, workflow, slices, guidelines)
+### When to Use
+- After slice plan approved by user
+- When implementing changes requested during review
 
-### Testing Framework (React)
-- **Tool**: Vitest + React Testing Library
-- **Setup**: Test environment configuration in `src/test/setup.js`
-- **Config**: Vitest config in `vite.config.js`
-- **Tests**: Place in `src/*.test.jsx` alongside components
+### Scope
+- **May modify**: Source code, tests, config, dependencies (only as specified in approved plan)
+- **Must NOT modify**: `cosmo/spec.md` or `cosmo/slices/`, or files outside approved plan scope
+
+**Only implement what was approved. No scope creep.**
+
+**Note:** Specific file paths depend on your project structure (defined in spec.md).
+
+### Required Reading
+Before coding, you MUST read:
+- The approved plan from Phase 2
+- **`cosmo/architecture.md`** - Architecture rules
+- `cosmo/spec.md` - Product requirements + Architecture section (project-specific rules)
+- Relevant existing code to understand patterns
+
+**If the plan is unclear or incomplete → STOP and ask.**
+
+### Process
+1. **Read all required inputs** (listed above)
+2. Read relevant existing code to understand patterns
+3. Implement the slice:
+   - Create/modify files as planned
+   - Follow architecture rules from `architecture.md` and `spec.md`
+   - Write code that matches existing patterns
+   - Add or update tests for any new or changed behavior
+
+4. **Verify your work** (mandatory):
+   - Run verification command from spec.md (e.g., `npm run verify`, `make test`, `./verify.sh`)
+   - **ALL checks must pass**: type-check, lint, and tests
+   - If verification fails: fix, rerun, repeat until passing
+   - **You CANNOT proceed to Phase 4 while verification fails**
+   - **No manual verification** - only automated verification counts
+
+5. After verification passes, proceed to Phase 4 (Review)
+
+### Architecture Compliance
+
+**Read `cosmo/architecture.md` for complete guidelines.**
+
+Key points:
+- **File placement**: Features vs shared vs app buckets (no new top-level buckets)
+- **Import boundaries**: ❌ No feature-to-feature imports
+- **Avoid premature abstraction**: Only create shared code when used by 2+ features
+
+### Testing Requirements
+You MUST:
+- **Add or update tests** for any new or changed behavior
+- **Ensure regression safety** for existing behavior
+- **Never remove tests** unless explicitly part of the approved plan
+- Tests should match the existing test patterns in the codebase
+- **If no tests exist yet** (first slice): Set up testing infrastructure per spec.md and add basic tests
 
 ### Test Planning Strategy
 
@@ -115,64 +346,119 @@ Before writing tests, identify **full user workflows** rather than isolated oper
 **Think in complete cycles:**
 - Don't just test: "save works" and "load works" separately
 - Test the full cycle: save → close app → reopen app → data appears
-- Example: localStorage persistence requires testing unmount/remount, not just save and render
+- Example: Persistent storage requires testing lifecycle boundaries (shutdown/restart)
 
-**Identify what the app must survive:**
-- Page reloads (component unmount/remount)
-- Browser restarts (localStorage/sessionStorage)
-- Network failures (API calls)
-- Invalid data (corrupted storage, bad API responses)
+**Identify what the system must survive:**
+- Application restarts (state persistence)
+- Network failures (API calls, retries)
+- Invalid data (corrupted storage, bad responses)
+- Concurrent operations (race conditions)
 
 **Watch for test gaps:**
-- Tests that check React state display but not underlying persistence
+- Tests that check in-memory state but not underlying persistence
 - Tests that mock away the exact thing you need to verify
-- Tests that start with pre-populated data but never test the initialization path
+- Tests that start with pre-populated state but never test initialization
 - Tests that verify individual operations but miss cumulative effects
 
-**Example: localStorage testing**
-```javascript
+**Example: Persistence testing**
+```
 // ❌ Weak: Tests save and load separately
-it('saves to localStorage', () => { /* add item, check localStorage */ })
-it('loads from localStorage', () => { /* pre-fill storage, render, check screen */ })
-// Problem: Load test sets storage before render, checks screen, but save
-// effect might corrupt storage afterward. Test passes but app fails.
+test('saves to storage') → { add item, check storage }
+test('loads from storage') → { pre-fill storage, start app, check display }
+// Problem: Load test sets storage before app starts, checks display, but save
+// logic might corrupt storage afterward. Test passes but app fails.
 
 // ✅ Strong: Tests the full cycle
-it('persists data across remounts', () => {
-  // 1. Render component (starts empty)
-  const { unmount } = render(<App />)
-  // 2. Add item (triggers save)
-  userEvent.click(screen.getByText('Add'))
-  // 3. Unmount (simulates closing app)
-  unmount()
-  // 4. Remount (simulates reopening app)
-  render(<App />)
-  // 5. Verify data survived
-  expect(screen.getByText('Item')).toBeInTheDocument()
-})
+test('persists data across restarts') {
+  1. Start application (empty state)
+  2. Add item (triggers save)
+  3. Shutdown application
+  4. Restart application
+  5. Verify item still exists
+}
 ```
 
 **Questions to ask yourself:**
 - If the user closes and reopens the app, does my test verify data survives?
-- If the component unmounts and remounts, do my tests simulate this?
-- Am I testing what the user experiences or just what React state displays?
+- If the system restarts, do my tests simulate this?
+- Am I testing what the user experiences or just what in-memory state shows?
 - Does this test actually exercise the full code path from start to finish?
 
 ### Test Coverage
 Write tests that cover:
-- Rendering and initial state
-- User interactions (clicks, form submissions, keyboard events)
+- Initial state and setup
+- User interactions and operations
 - State changes and updates
-- Edge cases (empty inputs, validation)
+- Edge cases (empty inputs, validation, boundaries)
 - Multiple items/operations
-- **Complete workflows** (especially for persistence, navigation, multi-step processes)
+- **Complete workflows** (especially for persistence, external integrations, multi-step processes)
 
-### Quality Checks
-Before proceeding:
-- ✅ All tests passing
-- ✅ Build succeeds with no errors
-- ✅ Code matches approved plan scope
-- ✅ No obvious bugs or issues
+### Code Quality Rules
+- **Functions**: ≤ 50 lines, cyclomatic complexity ≤ 8, ≤ 5 positional params
+- **Lines**: 100-char max (or project standard), no relative `..` imports
+- **Naming**: Clear, descriptive names that reduce need for comments
+- **Imports**: Only what you need, no unused exports or dead code
+- **Style**: Consistent with codebase
+- **Error handling**: Fail fast with clear messages, never swallow exceptions silently
+- **Type checking**: All code must pass static type checks (if language supports it)
+- **Doc comments**: On non-trivial public APIs (use project style guide)
+- **Comments**: Only where logic isn't self-evident (no obvious, repeated, or commented-out code)
+- **Configuration**: In proper location per `architecture.md`, no hardcoded paths
+
+### Additional Standards
+
+**Bash**: Use strict mode (`#!/bin/bash` + `set -euo pipefail`). Lint with `shellcheck` and `shfmt`.
+
+**Git**: Imperative mood, ≤72 char subject. One logical change per commit. Never amend/rebase pushed commits.
+
+**Secrets**: Never commit secrets. Use gitignored `.env` files and environment variables.
+
+**Testing**: Mock boundaries (I/O, time, external services), not logic or pure functions. Verify tests fail when code breaks. Test file placement should follow project conventions (see spec.md). Integration tests when in doubt.
+
+**CI**: No scheduled runs without code changes.
+
+### Completion Criteria
+The slice is complete ONLY when ALL of these are true:
+- ✓ Implementation matches the approved plan
+- ✓ Verification command passes (all checks: type-check, lint, tests)
+- ✓ All tests pass (existing + new)
+- ✓ **Tests exist for all new functionality** (no untested code)
+- ✓ Diff is minimal and scoped to the slice
+- ✓ Architecture boundaries respected
+- ✓ No unused imports, exports, or dead code
+- ✓ Documentation updated where required
+- ✓ Codebase remains architecturally consistent
+
+**If any criterion fails, the slice is not complete.**
+
+### Stop Condition
+When all completion criteria are satisfied:
+- **STOP** - Do not add extra improvements
+- **STOP** - Do not refactor unrelated code
+- **STOP** - Do not optimize prematurely
+- Proceed to Phase 4 (Review)
+
+### Common Pitfalls (Avoid These)
+- Refactoring code not in the approved plan
+- Adding features beyond the plan or speculative "might be useful" functionality
+- Creating abstractions for one-time use (wait until code is written 3+ times)
+- Adding config for hypothetical future needs
+- Adding unnecessary dependencies (each is attack surface + maintenance burden)
+- Documenting or validating features that aren't implemented yet (no phantom features)
+- **Skipping tests** - Every slice with code changes needs tests
+- Changing architecture patterns without discussion
+- Using `type: ignore` or skipping type checks without justification
+
+### Security Considerations
+Be careful to avoid:
+- Command injection vulnerabilities
+- XSS vulnerabilities
+- SQL injection
+- Insecure authentication/authorization
+- Exposed secrets or credentials
+- OWASP Top 10 vulnerabilities
+
+**If you notice security issues: fix them immediately OR note them for the next slice.**
 
 ### Then
 Update state with progress, then → Phase 4 (auto-proceed)
