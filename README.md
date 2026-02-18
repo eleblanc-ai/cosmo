@@ -6,6 +6,8 @@
 
 Cosmo is a workflow system that guides AI-assisted development through phases of interviewing, planning, implementing, and approving. It breaks large projects into manageable slices while maintaining quality and documentation.
 
+**Note:** This framework is designed to work with AI coding assistants like Claude (via GitHub Copilot or VSCode extensions) or Codex agents in VSCode.
+
 ## Getting Started
 
 To start working with Cosmo, tell your AI assistant:
