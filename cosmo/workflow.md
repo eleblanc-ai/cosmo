@@ -462,13 +462,13 @@ Update state with progress, then → Phase 4 (auto-proceed)
 "✅ Phase 4: Approval - Presenting slice for final approval"
 
 ### Do
-Show what changed. Show test results. Provide verification steps.
+Present the slice to the user using the **Slice Template** from `cosmo/templates.md` as the format — do not summarize, include actual output (real test results, real verify output, real file list). This is the preview of what will be recorded if approved.
 
 ### Then Ask
-"What next? (1/2)"
-1. Approve
-2. More work needed
+"Approve this slice? (yes/no)"
 
 ### Routing
-- 1 or "approve" → Record slice using Slice Template from `cosmo/templates.md` (increment number, fill in all sections, copy plan from `cosmo/current-plan.md`), clear `current-phase.md`, then Phase 2
-- 2 or "more work" → Update `cosmo/current-plan.md` with iteration details, update state, then Phase 3 (ask what's needed if they haven't said)
+- yes → Write the slice file to `cosmo/slices/slice-{N}-{name}.md` using the Slice Template from `cosmo/templates.md` (same content as the preview above), clear `cosmo/current-plan.md` and `cosmo/current-phase.md`, then Phase 2
+- no → Ask what needs to change, update `cosmo/current-plan.md` with iteration details, then Phase 3
+
+**The slice file is ONLY written after the user approves. Never before.**

@@ -1,18 +1,24 @@
-# Ignore everything at the root
-/*
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# Except the cosmo directory and README
-!cosmo/
-!README.md
-!.gitignore
+node_modules
+dist
+dist-ssr
+*.local
 
-# Include all files in cosmo by default
-!cosmo/**
-
-# But ignore all files in slices except .gitkeep (to keep directory structure)
-cosmo/slices/*
-!cosmo/slices/.gitkeep
-
-# Ignore the contents of these files (they should remain empty in repo)
-cosmo/current-phase.md
-cosmo/current-plan.md
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

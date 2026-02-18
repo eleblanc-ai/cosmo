@@ -229,12 +229,12 @@ User: {approval decision}
 **Status:** ✅ All Passing / ❌ {X} Failed / N/A
 
 **Test Details:**
-List each test created or modified in this slice with description:
-- **Test name** - What the test verifies, what scenarios it covers, expected behavior
+List each test created or modified in this slice, with pass/fail status and description:
 
-Example format:
-1. **saves data to localStorage** - Verifies adding an item triggers save, checks data structure is correct
-2. **handles invalid input gracefully** - Tests empty strings and special characters, validates error messages display
+| # | File | Test name | Status | What it verifies |
+|---|------|-----------|--------|-----------------|
+| 1 | `{path/to/file.test.tsx}` | {test name} | ✅ Pass / ❌ Fail | {what it verifies, scenarios covered, expected behavior} |
+| 2 | `{path/to/file.test.tsx}` | {test name} | ✅ Pass / ❌ Fail | {what it verifies, scenarios covered, expected behavior} |
 
 ---
 
