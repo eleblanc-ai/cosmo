@@ -145,6 +145,20 @@ Before planning, you MUST read **in this order:**
   - Must achieve: Verification command passes (from spec.md)
 - This ensures all future slices can include tests
 
+**Project directory convention:** Every project lives in its own named subfolder inside `cosmo-v3/` with its own git repo:
+```
+cosmo-v3/
+  cosmo/          ← cosmo framework (tracked by cosmo-v3 git)
+  recipe-lab/     ← project (its own .git, its own remote)
+  my-other-app/   ← another project (its own .git, its own remote)
+```
+When scaffolding a new project:
+1. Create the project folder: `mkdir cosmo-v3/PROJECT_NAME/`
+2. Scaffold into it (e.g. `npm create vite@latest . -- --template react-ts`)
+3. `git init` inside the project folder
+4. Create a GitHub repo and set the remote
+5. Never scaffold at the `cosmo-v3/` root — that git only tracks `cosmo/`
+
 **3. Identify the next logical slice:**
 - What are the prerequisites/dependencies?
 - What's the smallest vertical slice that makes progress?
