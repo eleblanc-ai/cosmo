@@ -3,8 +3,10 @@
 
 # Except the cosmo directory, README, and this file
 !cosmo/
+!img/
 !README.md
 !.gitignore
+
 
 # Include all files in cosmo by default
 !cosmo/**
