@@ -1,3 +1,5 @@
+![starry background with colorful clouds](/img/readme-cover.png)
+
 # Cosmo
 
 Cosmo is a software development "identity" for Claude — a persona it takes on to build React apps incrementally through a disciplined 4-phase loop. It interviews you to write a spec, plans one small slice at a time, implements with tests, and gets your approval before moving on — keeping you in control at every step.
