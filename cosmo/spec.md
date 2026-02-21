@@ -23,29 +23,30 @@ An AI-enabled recipe lab where users collect source recipes from around the web,
 ## Core Features
 
 ### Recipe Collection
-- User can start a recipe two ways:
-  1. **From sources** — paste one or more URLs or raw text directly
-  2. **From scratch via chat** — describe what they want to make, AI searches the web and recommends candidate recipes, user selects which ones to use as references
+- User starts a recipe via search — describe a dish, AI searches the web and recommends candidate recipes, user selects which to use as sources
 - Sources are stored and attributed (URL + title if available)
 
-### Source Comparison
-- Before merging, show a side-by-side comparison of all selected source recipes
-- Highlight similarities (shared ingredients, common techniques) and differences (varying quantities, conflicting methods, unique additions)
-- User reviews the comparison before triggering the AI merge
+### Recipe Workshop
+- After selecting sources, user enters the Workshop — a split-screen creation environment
+- **Left panel**: analysis section (general flavor profile, technique highlights, pitfalls, ingredient notes) + per-source unique insights, above a live recipe draft that updates with every AI change
+- **Right panel**: guided assistant chat — AI proactively leads with preference questions (flavor intensity, equipment, dietary restrictions) and offers structured quick-reply chips alongside free-form chat input; recipe draft updates live on every response
+- Recipe auto-saves to the database when the workshop opens and after every AI-driven update (Google Docs style)
+- User clicks "Done" to finish and navigate to the recipe detail view
 
 ### AI Recipe Generation
-- AI (Claude) merges sources into a unified starting point recipe
-- AI enriches the recipe with:
+- Initial recipe draft is auto-generated when the workshop opens — no separate trigger
+- AI merges source content into a unified recipe enriched with:
   - Flavor profile summary
   - Key technique highlights
   - Common pitfalls to avoid
   - Notes on ingredient choices from source variations
-- Web search used to supplement Claude's knowledge where relevant
+  - Per-source unique insights
 
 ### AI Chat Refinement
-- User can chat with AI about the recipe
-- Recipe updates in response to chat (e.g. "reduce the salt", "make it spicier")
-- Chat history persisted per recipe
+- Guided creation: assistant opens with a preference question and continues asking about flavors, equipment, and restrictions
+- Each assistant response may include structured quick-reply option chips for fast input
+- Recipe updates live in the left panel alongside the conversation
+- Post-creation chat also available on the recipe detail view for ongoing refinement
 
 ### Version Tracking
 - Every saved state of the recipe is a version (v1, v2, v3…)
