@@ -45,12 +45,15 @@ You can have natural conversations during any phase:
 **Maintain `.state/current-phase.md` to enable resuming work at any time.**
 
 ### When to Save State
+- **Automatically (no user action needed):**
+  - Plan approved → entering Phase 3: write `## Phase 3: Implement\n\nImplementing slice N: [name], plan approved.` to `current-phase.md`
+  - Verification passes → entering Phase 4: update `current-phase.md` to `## Phase 4: Approval\n\nSlice N implemented, awaiting approval.`
 - User says "pause", "stop", "save progress", or similar
 - Taking a break or ending a session mid-phase
 - Before a long tangent that might lose context
 
 ### When to Clear State
-- Completing a phase and moving to the next phase
+- Slice approved in Phase 4 (after writing slice file and test report)
 - User explicitly requests starting fresh work
 
 ### What to Save (per phase)
@@ -279,7 +282,7 @@ Approve this plan?
 
 ### Routing
 - No → Phase 2 (continue, update state)
-- Yes → Write approved plan to `.state/current-plan.md`, clear `.state/current-phase.md`, then Phase 3
+- Yes → Write approved plan to `.state/current-plan.md`, write `## Phase 3: Implement\n\nImplementing slice N: [name], plan approved.` to `.state/current-phase.md`, then Phase 3
 
 ---
 
@@ -472,7 +475,7 @@ Be careful to avoid:
 **If you notice security issues: fix them immediately OR note them for the next slice.**
 
 ### Then
-Update state with progress, then → Phase 4 (auto-proceed)
+Update `.state/current-phase.md` to `## Phase 4: Approval\n\nSlice N implemented, awaiting approval.`, then → Phase 4 (auto-proceed)
 
 ---
 
