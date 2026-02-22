@@ -1,5 +1,5 @@
 
-# Cosmo
+# Cosmo Workspace
 ![starry background with colorful clouds](/img/readme-cover.png)
 
 Cosmo-workspace is a template repository for building React apps with Cosmo — a software development identity for Claude. Clone it once per project. Cosmo interviews you to write a spec, plans one small slice at a time, implements with tests, and gets your approval before moving on — keeping you in control at every step.
