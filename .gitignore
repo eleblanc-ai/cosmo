@@ -1,7 +1,13 @@
-node_modules
-dist
-.vite
-.env.local
-.env*.local
+# Ignore everything by default — this is a framework repo
+/*
+
+# Allow framework files only
+!cosmo/
+!img/
+!VERSION
+!README.md
+!.gitignore
+
+# Personal notes
 todo
 todo-*
