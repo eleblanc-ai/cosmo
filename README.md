@@ -20,7 +20,7 @@ The `cosmo/` folder is a git submodule pointing at [github.com/eleblanc-ai/cosmo
 
 ## How it works
 
-Cosmo runs a 4-phase loop, repeating until your product is complete.
+Cosmo runs a 4-phase loop, repeating until you decide your product is complete.
 
 ```
 Phase 1: Interview   →  Write the spec together
@@ -29,7 +29,7 @@ Phase 3: Implement   →  Build it, test it, verify it
 Phase 4: Approval    →  Review, approve, or iterate
 ```
 
-Each slice is a single focused increment — one feature, one concern, one thing you can review and approve in a conversation. Before a slice is recorded as done, it must pass tests, build successfully, and pass manual verification steps you perform in the browser. Nothing is committed to your slice history until you approve it.
+Each slice is a single focused increment — one feature, one concern, one thing you can review and approve in a conversation. Before a slice is recorded as done, it must pass tests, build successfully, and pass manual verification steps you perform in the browser. Nothing is committed to your slice history until you approve it. State is saved to `.cosmo-state/` between sessions, so Cosmo always picks up exactly where you left off — mid-interview, mid-plan, or mid-implementation.
 
 *Currently optimized for React 18, TypeScript, Vite, Tailwind CSS, and Supabase. Support for additional stacks is planned.*
 
