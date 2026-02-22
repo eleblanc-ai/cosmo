@@ -41,11 +41,13 @@ Optionally, Cosmo can initialize your project as a GitHub repo and commit after 
 
 Cosmo runs inside an AI coding agent using project instructions.
 
-**1. Clone the template**
+**1. Create your project from the template**
 
 ```bash
-git clone https://github.com/eleblanc-ai/cosmo my-project
+gh repo create my-project --template eleblanc-ai/cosmo --clone --private
 ```
+
+This creates a fresh repo in your GitHub account with a clean history and clones it locally.
 
 **2. Open in your AI coding agent**
 
@@ -77,7 +79,7 @@ start cosmo
 
 ## Workspace structure
 
-Each workspace holds exactly one project. The `cosmo/` folder is the framework; your app lives in a named subfolder alongside it.
+Each workspace holds exactly one project. Project files live at the root alongside the `cosmo/` framework folder.
 
 ```
 my-project/
@@ -88,7 +90,7 @@ my-project/
 │   ├── templates.md       ← Document templates
 │   └── stacks/            ← Stack-specific rules
 ├── VERSION                ← Installed framework version
-├── .cosmo-state/          ← Project state (tracked by your workspace repo)
+├── .cosmo-state/          ← Project state
 │   ├── spec.md            ← Your product spec (Phase 1 output)
 │   ├── current-phase.md   ← Resume point when pausing
 │   ├── current-plan.md    ← Active slice plan
@@ -97,9 +99,9 @@ my-project/
 │       ├── slice-1-project-setup.md
 │       ├── slice-2-auth.md
 │       └── ...
-└── your-project/          ← Your app
-    ├── src/
-    └── ...
+├── src/                   ← Your app (scaffolded at first slice)
+├── package.json
+└── ...
 ```
 
 Cosmo never edits framework files. To start a new project, clone a fresh copy of this template.

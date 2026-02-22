@@ -158,19 +158,9 @@ Before planning, you MUST read **in this order:**
   - Must achieve: Verification command passes (from spec.md)
 - This ensures all future slices can include tests
 
-**Project directory convention:** Each workspace holds exactly one project. The project lives in a named subfolder alongside `cosmo/`, and the workspace git tracks everything:
-```
-cosmo-workspace/
-  cosmo/        ← cosmo framework files
-  recipe-lab/   ← your project
-```
-**Starting a new project** means cloning a fresh copy of the cosmo template — not adding another folder to an existing workspace. One workspace, one project.
+**Project structure:** The workspace IS the project. Project files live at the root alongside `cosmo/`. Each workspace holds exactly one project — starting a new project means creating a new repo from the Cosmo template, not reusing an existing workspace.
 
-When scaffolding the project folder:
-1. Create the project folder: `mkdir PROJECT_NAME/`
-2. Scaffold into it using your stack's tool (see stack file or spec.md for the exact command)
-3. Create a GitHub repo for the project and set its remote
-4. Never scaffold at the workspace root — that's where `cosmo/` lives
+When scaffolding on the first slice, scaffold into the current directory (e.g. `npm create vite@latest .`). The `cosmo/` folder and `.cosmo-state/` will already be there — the scaffold tool should not overwrite them.
 
 **3. Identify the next logical slice:**
 - What are the prerequisites/dependencies?
@@ -507,10 +497,8 @@ Present the slice to the user using the **Slice Template** from `cosmo/templates
   2. Append this slice's entry to `.cosmo-state/test-report.md` using the Test Report Template from `cosmo/templates.md` — one paragraph summary + test table for this slice only
   3. Clear `.cosmo-state/current-plan.md` and `.cosmo-state/current-phase.md`
   4. Check `.cosmo-state/spec.md` for `**GitHub integration:**`:
-     - `enabled` →
-       1. From the **project directory**: `git add -A && git commit -m "{message}"` — imperative mood, ≤72 char subject line, summarizing what the slice delivers (e.g. `Add sign-up confirmation toast`)
-       2. From the **workspace root**: `git add .cosmo-state/ && git commit -m "{message}"` — same message
-     - `disabled` → skip commits
+     - `enabled` → from the repo root: `git add -A && git commit -m "{message}"` — imperative mood, ≤72 char subject line, summarizing what the slice delivers (e.g. `Add sign-up confirmation toast`)
+     - `disabled` → skip commit
   5. Then Phase 2
 - no → Ask what needs to change. Then:
   1. **Check if the change affects the spec** — if so, update `.cosmo-state/spec.md` and show the user the updated section before proceeding

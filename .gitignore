@@ -1,16 +1,7 @@
-# Ignore everything at the root by default
-/*
-
-# Framework files
-!cosmo
-!cosmo/**
-!VERSION
-
-# Project state
-!.cosmo-state/
-!.cosmo-state/**
-
-# Template files
-!img/
-!README.md
-!.gitignore
+node_modules
+dist
+.vite
+.env.local
+.env*.local
+todo
+todo-*
