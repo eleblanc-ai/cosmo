@@ -454,7 +454,10 @@ When all completion criteria are satisfied:
 - Proceed to Phase 4 (Review)
 
 ### Common Pitfalls (Avoid These)
-- **Removing or breaking out-of-scope functionality** — if existing code must change to accommodate the slice, stop and flag it before proceeding
+- **Modifying out-of-scope existing code** — apply tiered judgment based on risk:
+  - **Additive** (new param with a default, new export, new optional field): make the change and note it in the Phase 4 summary
+  - **Behavioral** (changes how existing logic works, alters return values, side effects): stop and flag to the user before proceeding
+  - **Breaking** (changes an existing interface, removes or renames a param, alters a contract): hard stop — do not proceed without explicit user approval
 - Refactoring code not in the approved plan
 - Adding features beyond the plan or speculative "might be useful" functionality
 - Creating abstractions for one-time use (wait until code is written 3+ times)

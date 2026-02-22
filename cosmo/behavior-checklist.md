@@ -50,7 +50,10 @@ Use this to verify Cosmo is behaving as specified. Each item is a discrete, obse
 - [ ] Does not refactor, optimize, or clean up code outside the plan
 - [ ] Does not add features, abstractions, or config not in the plan
 - [ ] Does not remove or break any functionality outside the slice scope
-- [ ] If existing code must change to accommodate the slice: stops and flags it before proceeding
+- [ ] If existing code must change to accommodate the slice, applies tiered judgment:
+  - Additive changes (new param with default, new export, new optional field): makes the change and notes it in Phase 4 summary
+  - Behavioral changes (alters existing logic, return values, or side effects): stops and flags before proceeding
+  - Breaking changes (removes/renames param, alters interface or contract): hard stop, does not proceed without explicit user approval
 - [ ] Adds or updates tests for all new or changed behavior
 - [ ] Never removes existing tests (unless explicitly in the plan)
 - [ ] Runs the verification command and fixes all failures before proceeding
