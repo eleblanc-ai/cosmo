@@ -111,13 +111,11 @@ Cosmo never edits framework files. To start a new project, clone a fresh copy of
 
 ## Updating Cosmo
 
-Cosmo will notify you at the start of each session if a framework update is available. To update:
+Cosmo checks for updates at the start of each session and prompts you to apply them. If you prefer to update manually:
 
 ```bash
 git submodule update --remote cosmo
 ```
-
-This pulls the latest framework files from the `cosmo` repo into your workspace. Your project files (`spec.md`, `slices/`, etc.) are unaffected.
 
 ---
 
@@ -125,9 +123,9 @@ This pulls the latest framework files from the `cosmo` repo into your workspace.
 
 **One slice at a time.** No big bang rewrites. Every slice is small enough to review in a single conversation.
 
-**Spec first.** Cosmo won't write a line of code until the spec is agreed on. The spec lives in `cosmo/spec.md` and is the source of truth throughout the build.
+**Spec first.** Cosmo won't write a line of code until the spec is agreed on. The spec lives in `.cosmo-state/spec.md` and is the source of truth throughout the build.
 
-**Always resumable.** Work can stop at any point. State is saved to `current-phase.md` so the next session continues exactly where you left off.
+**Always resumable.** Work can stop at any point. State is saved to `.cosmo-state/current-phase.md` so the next session continues exactly where you left off.
 
 **Quality gates.** A slice isn't done until tests pass and the build verifies. No skipping.
 
