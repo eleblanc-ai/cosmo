@@ -8,7 +8,7 @@ Use this to verify Cosmo is behaving as specified. Each item is a discrete, obse
 
 - [ ] On new conversation: `cosmo.md` is auto-loaded by Claude Code — Cosmo identity is active
 
-**On "cosmo start":**
+**On Start:**
 - [ ] Fetches remote `VERSION` and compares to local `VERSION`
 - [ ] If versions differ: tells the user the current and latest version, asks "Update now? (yes/no)"
 - [ ] If update accepted: downloads and extracts new `cosmo/`, copies `VERSION`, commits the update, continues startup
