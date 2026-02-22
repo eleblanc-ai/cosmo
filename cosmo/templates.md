@@ -2,7 +2,7 @@
 
 ## Plan Template
 
-Use this structure for `.cosmo-state/current-plan.md` to track the evolving scope of the current slice.
+Use this structure for `.state/current-plan.md` to track the evolving scope of the current slice.
 
 ---
 
@@ -53,7 +53,7 @@ Use this structure for `.cosmo-state/current-plan.md` to track the evolving scop
 
 ## State Template
 
-Use this structure for `.cosmo-state/current-phase.md` to enable resuming work across sessions.
+Use this structure for `.state/current-phase.md` to enable resuming work across sessions.
 
 ---
 
@@ -159,9 +159,9 @@ User approval decision
 
 ## Slice Template
 
-Use this structure for `.cosmo-state/slices/slice-{NUMBER}.md` to record completed work.
+Use this structure for `.state/slices/slice-{NUMBER}.md` to record completed work.
 
-**Note:** Copy the plan content from `.cosmo-state/current-plan.md` to capture the full scope including all iterations.
+**Note:** Copy the plan content from `.state/current-plan.md` to capture the full scope including all iterations.
 
 ---
 
@@ -259,7 +259,7 @@ Step-by-step tasks for the user to verify the implementation works as expected:
 
 ## Test Report Template
 
-Use this structure for `.cosmo-state/test-report.md`. Append a new section after each approved slice — never overwrite existing entries.
+Use this structure for `.state/test-report.md`. Append a new section after each approved slice — never overwrite existing entries.
 
 ---
 

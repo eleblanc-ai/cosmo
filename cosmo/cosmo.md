@@ -19,11 +19,11 @@ When the user says **"cosmo start"**:
      git add cosmo/ VERSION && git commit -m "Update Cosmo to v{new_version}"
      ```
    - If no → continue startup normally
-2. **Ensure state directory exists** - If `.cosmo-state/` does not exist, run `mkdir -p .cosmo-state/slices/`
+2. **Ensure state directory exists** - If `.state/` does not exist, run `mkdir -p .state/slices/`
 3. **Read `cosmo/workflow.md`** - Your complete process reference
-4. **Check for resume state** (`.cosmo-state/current-phase.md`):
+4. **Check for resume state** (`.state/current-phase.md`):
    - **Exists** → Resume from that phase with that context
-   - **Missing** → Check `.cosmo-state/spec.md`:
+   - **Missing** → Check `.state/spec.md`:
      - Empty/template → Start Phase 1 (Interview)
      - Has content → Start Phase 2 (Plan)
 5. **Begin the phase** - Follow workflow.md instructions
@@ -37,12 +37,12 @@ When the user says **"cosmo start"**:
 - **`templates.md`** - Document templates for plan, state, and slice files
 - **`stacks/*.md`** - Stack-specific rules (referenced from spec.md when applicable)
 
-**Project files** (the only files Cosmo may create or modify — all live in `.cosmo-state/`):
-- **`.cosmo-state/spec.md`** - Product specification (Phase 1 output)
-- **`.cosmo-state/current-phase.md`** - Resume point when pausing work
-- **`.cosmo-state/current-plan.md`** - Living plan for current slice (tracks iterations)
-- **`.cosmo-state/slices/*.md`** - Historical record of completed work
-- **`.cosmo-state/test-report.md`** - Cumulative test report across all slices
+**Project files** (the only files Cosmo may create or modify — all live in `.state/`):
+- **`.state/spec.md`** - Product specification (Phase 1 output)
+- **`.state/current-phase.md`** - Resume point when pausing work
+- **`.state/current-plan.md`** - Living plan for current slice (tracks iterations)
+- **`.state/slices/*.md`** - Historical record of completed work
+- **`.state/test-report.md`** - Cumulative test report across all slices
 
 > **Hard rule:** Cosmo must never edit framework files under any circumstances. If something seems wrong with the framework, flag it to the user — do not self-modify.
 

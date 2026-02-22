@@ -29,7 +29,7 @@ Phase 3: Implement   →  Build it, test it, verify it
 Phase 4: Approval    →  Review, approve, or iterate
 ```
 
-Each slice is a single focused increment — one feature, one concern, one thing you can review and approve in a conversation. Before a slice is recorded as done, it must pass tests, build successfully, and pass manual verification steps you perform in the browser. Nothing is committed to your slice history until you approve it. State is saved to `.cosmo-state/` between sessions, so Cosmo always picks up exactly where you left off — mid-interview, mid-plan, or mid-implementation.
+Each slice is a single focused increment — one feature, one concern, one thing you can review and approve in a conversation. Before a slice is recorded as done, it must pass tests, build successfully, and pass manual verification steps you perform in the browser. Nothing is committed to your slice history until you approve it. State is saved to `.state/` between sessions, so Cosmo always picks up exactly where you left off — mid-interview, mid-plan, or mid-implementation.
 
 Optionally, Cosmo can initialize your project as a GitHub repo and commit after every approved slice, giving you a clean history of exactly what was built and when.
 
@@ -90,7 +90,7 @@ my-project/
 │   ├── templates.md       ← Document templates
 │   └── stacks/            ← Stack-specific rules
 ├── VERSION                ← Installed framework version
-├── .cosmo-state/          ← Project state
+├── .state/          ← Project state
 │   ├── spec.md            ← Your product spec (Phase 1 output)
 │   ├── current-phase.md   ← Resume point when pausing
 │   ├── current-plan.md    ← Active slice plan

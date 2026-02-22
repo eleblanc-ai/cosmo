@@ -42,7 +42,7 @@ You can have natural conversations during any phase:
 
 ## State Management
 
-**Maintain `.cosmo-state/current-phase.md` to enable resuming work at any time.**
+**Maintain `.state/current-phase.md` to enable resuming work at any time.**
 
 ### When to Save State
 - User says "pause", "stop", "save progress", or similar
@@ -64,11 +64,11 @@ You can have natural conversations during any phase:
 
 ## Plan Management
 
-**Maintain `.cosmo-state/current-plan.md` to capture the full scope of each slice:**
-- Phase 2 (on approval): Write approved plan to `.cosmo-state/current-plan.md`
-- Phase 4 (on "more work needed"): Append iteration details to `.cosmo-state/current-plan.md`
-- Phase 4 (on approval): Copy `.cosmo-state/current-plan.md` content into slice report
-- Phase 2 (next slice): Overwrite `.cosmo-state/current-plan.md` with new plan
+**Maintain `.state/current-plan.md` to capture the full scope of each slice:**
+- Phase 2 (on approval): Write approved plan to `.state/current-plan.md`
+- Phase 4 (on "more work needed"): Append iteration details to `.state/current-plan.md`
+- Phase 4 (on approval): Copy `.state/current-plan.md` content into slice report
+- Phase 2 (next slice): Overwrite `.state/current-plan.md` with new plan
 
 **Use Plan Template from `cosmo/templates.md`** for the plan file structure.
 
@@ -80,7 +80,7 @@ You can have natural conversations during any phase:
 "📋 Phase 1: Interview - Writing spec"
 
 ### Do
-Ask questions one at a time. Gather: goals, users, core features, constraints. Write to `.cosmo-state/spec.md`.
+Ask questions one at a time. Gather: goals, users, core features, constraints. Write to `.state/spec.md`.
 
 **Identify the tech stack** during the interview. Check `cosmo/stacks/` for a matching stack file. If one exists, record it in spec.md:
 ```
@@ -93,8 +93,8 @@ If no matching stack file exists, proceed without one — the spec's Architectur
 **If the user requests something unconventional, technically problematic, or that conflicts with better-established approaches:** Gently point this out and suggest a more conventional or practical alternative. Briefly explain the tradeoff. Ultimately respect the user's decision if they want to proceed anyway.
 
 ### File Rules
-**Must reference:** `.cosmo-state/spec.md` (check if exists)
-**Can modify:** `.cosmo-state/spec.md` (create or update)
+**Must reference:** `.state/spec.md` (check if exists)
+**Can modify:** `.state/spec.md` (create or update)
 **Cannot modify:** Implementation files, test files, config files, slice files
 
 ### Then Ask
@@ -105,10 +105,10 @@ If no matching stack file exists, proceed without one — the spec's Architectur
 - Yes →
   1. **Ask about GitHub integration** — "Would you like Cosmo to create a GitHub repo for your project and commit after each approved slice? (yes/no)"
      - yes → run `gh auth status`:
-       - If authenticated: confirm which account will be used, then record `**GitHub integration:** enabled` in `.cosmo-state/spec.md`
-       - If not authenticated: run `gh auth login` and walk them through it step by step. Do not proceed until authentication succeeds. Then record `**GitHub integration:** enabled` in `.cosmo-state/spec.md`
-     - no → record `**GitHub integration:** disabled` in `.cosmo-state/spec.md`
-  2. Clear `.cosmo-state/current-phase.md`, then Phase 2
+       - If authenticated: confirm which account will be used, then record `**GitHub integration:** enabled` in `.state/spec.md`
+       - If not authenticated: run `gh auth login` and walk them through it step by step. Do not proceed until authentication succeeds. Then record `**GitHub integration:** enabled` in `.state/spec.md`
+     - no → record `**GitHub integration:** disabled` in `.state/spec.md`
+  2. Clear `.state/current-phase.md`, then Phase 2
 
 ---
 
@@ -127,17 +127,17 @@ Identify the next smallest, shippable slice of work toward completing the spec.
 ### Scope
 - **May read**: Any files to understand context
 - **May present**: Plans to the user
-- **Must NOT modify**: Any code files, `.cosmo-state/spec.md`, or `.cosmo-state/slices/`
+- **Must NOT modify**: Any code files, `.state/spec.md`, or `.state/slices/`
 
 **The planner only plans. All code changes happen in Phase 3.**
 
 ### Required Reading
 Before planning, you MUST read **in this order:**
 1. **`cosmo/architecture.md`** - Universal architecture principles (READ THIS FIRST)
-2. **Stack file** (if specified in `.cosmo-state/spec.md`) - Stack-specific rules and patterns
-3. **`.cosmo-state/spec.md`** - Product requirements
-4. **Architecture section in `.cosmo-state/spec.md`** - Project-specific constraints (language, framework, structure)
-5. **`.cosmo-state/slices/*`** - What's already completed
+2. **Stack file** (if specified in `.state/spec.md`) - Stack-specific rules and patterns
+3. **`.state/spec.md`** - Product requirements
+4. **Architecture section in `.state/spec.md`** - Project-specific constraints (language, framework, structure)
+5. **`.state/slices/*`** - What's already completed
 6. **Current codebase** - What exists now, patterns to follow
 
 **If requirements are unclear → STOP and ask the user.**
@@ -160,7 +160,7 @@ Before planning, you MUST read **in this order:**
 
 **Project structure:** The workspace IS the project. Project files live at the root alongside `cosmo/`. Each workspace holds exactly one project — starting a new project means creating a new repo from the Cosmo template, not reusing an existing workspace.
 
-When scaffolding on the first slice, scaffold into the current directory (e.g. `npm create vite@latest .`). The `cosmo/` folder and `.cosmo-state/` will already be there — the scaffold tool should not overwrite them.
+When scaffolding on the first slice, scaffold into the current directory (e.g. `npm create vite@latest .`). The `cosmo/` folder and `.state/` will already be there — the scaffold tool should not overwrite them.
 
 **3. Identify the next logical slice:**
 - What are the prerequisites/dependencies?
@@ -279,7 +279,7 @@ Approve this plan?
 
 ### Routing
 - No → Phase 2 (continue, update state)
-- Yes → Write approved plan to `.cosmo-state/current-plan.md`, clear `.cosmo-state/current-phase.md`, then Phase 3
+- Yes → Write approved plan to `.state/current-plan.md`, clear `.state/current-phase.md`, then Phase 3
 
 ---
 
@@ -297,7 +297,7 @@ Deliver a fully verified, minimal, production-ready change.
 
 ### Scope
 - **May modify**: Source code, tests, config, dependencies (only as specified in approved plan)
-- **Must NOT modify**: `.cosmo-state/spec.md` or `.cosmo-state/slices/`, or files outside approved plan scope
+- **Must NOT modify**: `.state/spec.md` or `.state/slices/`, or files outside approved plan scope
 
 **Only implement what was approved. No scope creep.**
 
@@ -307,8 +307,8 @@ Deliver a fully verified, minimal, production-ready change.
 Before coding, you MUST read:
 - The approved plan from Phase 2
 - **`cosmo/architecture.md`** - Architecture rules
-- **Stack file** (if specified in `.cosmo-state/spec.md`) - Stack-specific rules and patterns
-- `.cosmo-state/spec.md` - Product requirements + Architecture section (project-specific rules)
+- **Stack file** (if specified in `.state/spec.md`) - Stack-specific rules and patterns
+- `.state/spec.md` - Product requirements + Architecture section (project-specific rules)
 - Relevant existing code to understand patterns
 
 **If the plan is unclear or incomplete → STOP and ask.**
@@ -493,16 +493,16 @@ Present the slice to the user using the **Slice Template** from `cosmo/templates
 
 ### Routing
 - yes →
-  1. Write the slice file to `.cosmo-state/slices/slice-{N}-{name}.md` using the Slice Template from `cosmo/templates.md` (same content as the preview above)
-  2. Append this slice's entry to `.cosmo-state/test-report.md` using the Test Report Template from `cosmo/templates.md` — one paragraph summary + test table for this slice only
-  3. Clear `.cosmo-state/current-plan.md` and `.cosmo-state/current-phase.md`
-  4. Check `.cosmo-state/spec.md` for `**GitHub integration:**`:
+  1. Write the slice file to `.state/slices/slice-{N}-{name}.md` using the Slice Template from `cosmo/templates.md` (same content as the preview above)
+  2. Append this slice's entry to `.state/test-report.md` using the Test Report Template from `cosmo/templates.md` — one paragraph summary + test table for this slice only
+  3. Clear `.state/current-plan.md` and `.state/current-phase.md`
+  4. Check `.state/spec.md` for `**GitHub integration:**`:
      - `enabled` → from the repo root: `git add -A && git commit -m "{message}"` — imperative mood, ≤72 char subject line, summarizing what the slice delivers (e.g. `Add sign-up confirmation toast`)
      - `disabled` → skip commit
   5. Then Phase 2
 - no → Ask what needs to change. Then:
-  1. **Check if the change affects the spec** — if so, update `.cosmo-state/spec.md` and show the user the updated section before proceeding
-  2. Update `.cosmo-state/current-plan.md` with iteration details
+  1. **Check if the change affects the spec** — if so, update `.state/spec.md` and show the user the updated section before proceeding
+  2. Update `.state/current-plan.md` with iteration details
   3. Return to Phase 3 to implement the change
   4. Return to Phase 4 and **present the full updated slice** — never ask for approval without showing the updated work first
 
