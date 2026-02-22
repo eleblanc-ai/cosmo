@@ -2,7 +2,7 @@
 # Cosmo Workspace
 ![starry background with colorful clouds](/img/readme-cover.png)
 
-Cosmo-workspace is a template repository for building React apps with Cosmo — a software development identity for Claude. Clone it once per project. Cosmo interviews you to write a spec, plans one small slice at a time, implements with tests, and gets your approval before moving on — keeping you in control at every step.
+Cosmo-workspace is a template repository for building React apps with Cosmo — a software development identity for Claude. Clone it once per project. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
 The `cosmo/` folder is a git submodule pointing at [github.com/eleblanc-ai/cosmo](https://github.com/eleblanc-ai/cosmo), the Cosmo framework. Your project files live alongside it in the workspace.
 
@@ -14,23 +14,22 @@ The `cosmo/` folder is a git submodule pointing at [github.com/eleblanc-ai/cosmo
 - [Getting started](#getting-started)
 - [Workspace structure](#workspace-structure)
 - [Updating Cosmo](#updating-cosmo)
-- [Philosophy](#philosophy)
 - [Example session](#example-session)
 
 ---
 
 ## How it works
 
-Cosmo operates in four phases, cycling through them until your product is complete.
+Cosmo runs a 4-phase loop, repeating until your product is complete.
 
 ```
 Phase 1: Interview   →  Write the spec together
-Phase 2: Plan        →  Identify the next slice
+Phase 2: Plan        →  Scope the next slice
 Phase 3: Implement   →  Build it, test it, verify it
 Phase 4: Approval    →  Review, approve, or iterate
 ```
 
-Each slice is small and focused. Before a slice is considered done, it must pass tests, build successfully, and pass a series of manual verification steps you perform in the browser or app. The cycle keeps feedback tight and the codebase clean.
+Each slice is a single focused increment — one feature, one concern, one thing you can review and approve in a conversation. Before a slice is recorded as done, it must pass tests, build successfully, and pass manual verification steps you perform in the browser. Nothing is committed to your slice history until you approve it.
 
 *Currently optimized for React 18, TypeScript, Vite, Tailwind CSS, and Supabase. Support for additional stacks is planned.*
 
@@ -68,9 +67,7 @@ Cosmo checks for saved state and picks up exactly where you left off, or starts 
 pause cosmo
 ```
 
-Cosmo saves its phase context so the next session resumes without losing anything.
-
-If you have already activated and then paused it, you can restart with:
+Cosmo saves its phase context so the next session resumes without losing anything. To restart after pausing:
 
 ```
 start cosmo
@@ -119,20 +116,6 @@ git submodule update --remote cosmo
 
 ---
 
-## Philosophy
-
-**One slice at a time.** No big bang rewrites. Every slice is small enough to review in a single conversation.
-
-**Spec first.** Cosmo won't write a line of code until the spec is agreed on. The spec lives in `.cosmo-state/spec.md` and is the source of truth throughout the build.
-
-**Always resumable.** Work can stop at any point. State is saved to `.cosmo-state/current-phase.md` so the next session continues exactly where you left off.
-
-**Quality gates.** A slice isn't done until tests pass and the build verifies. No skipping.
-
-**User in control.** Cosmo proposes, you decide. Every slice requires explicit approval before code is written, and again before it's recorded as complete.
-
----
-
 ## Example session
 
 ```
@@ -146,17 +129,17 @@ Cosmo:  Great. A few questions...
         Does this spec capture your vision? (yes/no)
 
 You:    yes
-Cosmo:  Phase 2: Plan — Planning next slice
+Cosmo:  Phase 2: Plan — Scoping next slice
         [reads spec, examines codebase, proposes Slice 1]
         Approve this plan? (yes/no)
 
 You:    yes
-Cosmo:  Phase 3: Implement — Writing code and verifying quality
+Cosmo:  Phase 3: Implement — Building and verifying
         [builds, tests, verifies]
         Phase 4: Approval — Presenting slice
         All 12 tests pass. Here's what was built...
-        What next? (1) Next slice  (2) More work needed
+        Approve this slice? (yes/no)
 
-You:    1
+You:    yes
 Cosmo:  Phase 2: Plan...
 ```
