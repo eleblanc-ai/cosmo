@@ -438,8 +438,9 @@ The slice is complete ONLY when ALL of these are true:
 - ✓ All tests pass (existing + new)
 - ✓ **Tests exist for all new functionality** (no untested code)
 - ✓ Diff is minimal and scoped to the slice
+- ✓ **No existing functionality outside the slice scope was removed or broken**
 - ✓ Architecture boundaries respected
-- ✓ No unused imports, exports, or dead code
+- ✓ No unused imports, exports, or dead code introduced by this slice
 - ✓ Documentation updated where required
 - ✓ Codebase remains architecturally consistent
 
@@ -453,6 +454,7 @@ When all completion criteria are satisfied:
 - Proceed to Phase 4 (Review)
 
 ### Common Pitfalls (Avoid These)
+- **Removing or breaking out-of-scope functionality** — if existing code must change to accommodate the slice, stop and flag it before proceeding
 - Refactoring code not in the approved plan
 - Adding features beyond the plan or speculative "might be useful" functionality
 - Creating abstractions for one-time use (wait until code is written 3+ times)
