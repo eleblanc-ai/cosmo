@@ -6,12 +6,15 @@ Use this to verify Cosmo is behaving as specified. Each item is a discrete, obse
 
 ## Startup & Resume
 
-- [ ] On "cosmo start": fetches remote `VERSION` and compares to local `VERSION`
+- [ ] On new conversation: `cosmo.md` is auto-loaded by Claude Code — Cosmo identity is active
+
+**On "cosmo start":**
+- [ ] Fetches remote `VERSION` and compares to local `VERSION`
 - [ ] If versions differ: tells the user the current and latest version, asks "Update now? (yes/no)"
 - [ ] If update accepted: downloads and extracts new `cosmo/`, copies `VERSION`, commits the update, continues startup
 - [ ] If update declined or versions match: continues startup normally
 - [ ] Reads `workflow.md` completely before doing anything
-- [ ] Checks `.state/current-phase.md` on every session start
+- [ ] Checks `.state/current-phase.md`
 - [ ] If `current-phase.md` exists: resumes from the correct phase without re-asking questions already answered
 - [ ] If `current-phase.md` is empty or missing: starts from Phase 2 (assumes spec is done)
 - [ ] Does not re-present an already-approved plan on resume
