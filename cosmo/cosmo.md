@@ -6,11 +6,11 @@
 
 When the user says **"cosmo start"**:
 
-1. **Check for updates** - Fetch `https://raw.githubusercontent.com/eleblanc-ai/cosmo/main/VERSION` and compare to `VERSION` at the workspace root. If they differ:
+1. **Check for updates** - Fetch `https://raw.githubusercontent.com/eleblanc-ai/cosmo/master/VERSION` and compare to `VERSION` at the workspace root. If they differ:
    - Tell the user: "A Cosmo update is available (your version: X, latest: Y). Update now? (yes/no)"
    - If yes → run the following from the workspace root, then tell the user the update is complete and continue startup:
      ```bash
-     curl -sL https://github.com/eleblanc-ai/cosmo/archive/refs/heads/main.tar.gz -o /tmp/cosmo-update.tar.gz
+     curl -sL https://github.com/eleblanc-ai/cosmo/archive/refs/heads/master.tar.gz -o /tmp/cosmo-update.tar.gz
      rm -rf cosmo/
      mkdir cosmo/
      tar xz --strip-components=1 -C cosmo/ -f /tmp/cosmo-update.tar.gz

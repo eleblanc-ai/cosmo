@@ -104,6 +104,17 @@ cosmo-workspace/
 
 Cosmo never edits framework files. To start a new project, clone a fresh copy of this template.
 
+**Framework files:**
+
+| File | Purpose |
+|------|---------|
+| `cosmo.md` | Startup instructions and identity definition |
+| `workflow.md` | The 4-phase loop: Interview → Plan → Implement → Approval |
+| `architecture.md` | Architecture principles applied to all generated code |
+| `templates.md` | Templates for plans, state files, and slice records |
+| `stacks/` | Stack-specific rules (currently: React + Vite + Supabase) |
+| `VERSION` | Current version — checked at startup to detect updates |
+
 ---
 
 ## Updating Cosmo
