@@ -1,8 +1,8 @@
 
-# Cosmo Workspace
+# Cosmo
 ![starry background with colorful clouds](/img/readme-cover.png)
 
-Cosmo-workspace is a template repository for building React apps with Cosmo — a software development identity for Claude. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
+Cosmo is a template repository for building React apps with an AI dev partner. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
 The `cosmo/` folder contains the Cosmo framework. Your project files live alongside it in the workspace.
 
@@ -44,7 +44,7 @@ Cosmo runs inside an AI coding agent using project instructions.
 **1. Clone the template**
 
 ```bash
-git clone https://github.com/eleblanc-ai/cosmo-workspace my-project
+git clone https://github.com/eleblanc-ai/cosmo my-project
 ```
 
 **2. Open in your AI coding agent**
@@ -80,7 +80,7 @@ start cosmo
 Each workspace holds exactly one project. The `cosmo/` folder is the framework; your app lives in a named subfolder alongside it.
 
 ```
-cosmo-workspace/
+my-project/
 ├── cosmo/                 ← Cosmo framework (read-only)
 │   ├── cosmo.md           ← Identity instructions
 │   ├── workflow.md        ← The 4-phase loop
