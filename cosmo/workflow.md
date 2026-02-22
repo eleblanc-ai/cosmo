@@ -500,7 +500,7 @@ Present the slice to the user using the **Slice Template** from `cosmo/templates
   2. Append this slice's entry to `.state/test-report.md` using the Test Report Template from `cosmo/templates.md` — one paragraph summary + test table for this slice only
   3. Clear `.state/current-plan.md` and `.state/current-phase.md`
   4. Check `.state/spec.md` for `**GitHub integration:**`:
-     - `enabled` → from the repo root: `git add -A && git commit -m "{message}"` — imperative mood, ≤72 char subject line, summarizing what the slice delivers (e.g. `Add sign-up confirmation toast`)
+     - `enabled` → from the repo root: `git add -A && git commit -m "{message}" && git push` — imperative mood, ≤72 char subject line, summarizing what the slice delivers (e.g. `Add sign-up confirmation toast`). After pushing, tell the user: "Committed and pushed: {commit message}"
      - `disabled` → skip commit
   5. Then Phase 2
 - no → Ask what needs to change. Then:
