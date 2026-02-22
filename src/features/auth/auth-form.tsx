@@ -8,15 +8,26 @@ export function AuthForm() {
   const [password, setPassword] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [confirmed, setConfirmed] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError(null)
     setLoading(true)
-    const { error } = mode === 'sign-in'
-      ? await signIn(email, password)
-      : await signUp(email, password)
-    if (error) setError(error.message)
+    if (mode === 'sign-up') {
+      const { user, error } = await signUp(email, password)
+      if (user) {
+        setConfirmed(true)
+        setMode('sign-in')
+        setEmail('')
+        setPassword('')
+      } else if (error) {
+        setError(error.message)
+      }
+    } else {
+      const { error } = await signIn(email, password)
+      if (error) setError(error.message)
+    }
     setLoading(false)
   }
 
@@ -26,6 +37,18 @@ export function AuthForm() {
         <h1 className="font-black text-5xl tracking-tight text-[#1C1917] dark:text-[#FAFAF9] mb-10">
           Recipe Lab
         </h1>
+        {confirmed && (
+          <div className="mb-6 px-4 py-3 bg-[#D97706]/10 border border-[#D97706]/30 flex items-start justify-between gap-3">
+            <p className="text-sm text-[#D97706] font-medium">Account created — check your email to confirm.</p>
+            <button
+              onClick={() => setConfirmed(false)}
+              className="text-[#D97706]/60 hover:text-[#D97706] text-xs font-bold shrink-0 mt-0.5"
+              aria-label="Dismiss"
+            >
+              ✕
+            </button>
+          </div>
+        )}
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
@@ -55,7 +78,7 @@ export function AuthForm() {
           </button>
         </form>
         <button
-          onClick={() => setMode(m => m === 'sign-in' ? 'sign-up' : 'sign-in')}
+          onClick={() => { setMode(m => m === 'sign-in' ? 'sign-up' : 'sign-in'); setError(null) }}
           className="mt-6 text-sm text-[#D97706] hover:underline"
         >
           {mode === 'sign-in' ? 'No account? Sign up' : 'Have an account? Sign in'}

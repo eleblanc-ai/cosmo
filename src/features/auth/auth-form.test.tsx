@@ -4,7 +4,7 @@ import { vi } from 'vitest'
 import { AuthForm } from './auth-form'
 
 const mockSignIn = vi.hoisted(() => vi.fn().mockResolvedValue({ error: null }))
-const mockSignUp = vi.hoisted(() => vi.fn().mockResolvedValue({ error: null }))
+const mockSignUp = vi.hoisted(() => vi.fn().mockResolvedValue({ user: { id: 'test-user' }, error: null }))
 
 vi.mock('./auth-provider', () => ({
   useAuth: () => ({
@@ -36,5 +36,15 @@ describe('AuthForm', () => {
     render(<AuthForm />)
     await userEvent.click(screen.getByRole('button', { name: /sign up/i }))
     expect(screen.getByRole('button', { name: /create account/i })).toBeInTheDocument()
+  })
+
+  it('shows confirmation message and switches to sign-in after successful sign-up', async () => {
+    render(<AuthForm />)
+    await userEvent.click(screen.getByRole('button', { name: /sign up/i }))
+    await userEvent.type(screen.getByPlaceholderText('Email'), 'new@example.com')
+    await userEvent.type(screen.getByPlaceholderText('Password'), 'password123')
+    await userEvent.click(screen.getByRole('button', { name: /create account/i }))
+    expect(screen.getByText(/account created/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /sign in/i })).toBeInTheDocument()
   })
 })

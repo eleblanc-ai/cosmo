@@ -194,3 +194,16 @@ New recipe creation is now search-only, flowing directly into the Workshop — a
 | 8 | `src/features/recipes/recipe-workshop.test.tsx` | autosaves recipe to DB on mount | ✅ Pass | `createRecipe` called on Workshop mount |
 
 ---
+
+## Slice 15: Sign-up Confirmation
+
+Fixed a post-sign-up Supabase internal error ("Cannot coerce the result to a single JSON object") that was surfacing as a false failure in the auth form. Split sign-up and sign-in submit paths so the error is only shown when user creation actually failed. Added a persistent saffron confirmation banner for when email confirmations are enabled; when disabled (current setup) the user is logged in directly with no error.
+
+| # | File | Test name | Status | What it verifies |
+|---|------|-----------|--------|-----------------|
+| 1 | `src/features/auth/auth-form.test.tsx` | renders email and password fields | ✅ Pass | Form renders correctly in default sign-in mode |
+| 2 | `src/features/auth/auth-form.test.tsx` | calls signIn with email and password on submit | ✅ Pass | Sign-in path calls signIn with correct credentials |
+| 3 | `src/features/auth/auth-form.test.tsx` | toggles to sign-up mode | ✅ Pass | Mode toggle switches to sign-up UI |
+| 4 | `src/features/auth/auth-form.test.tsx` | shows confirmation message and switches to sign-in after successful sign-up | ✅ Pass | On successful sign-up, confirmation banner appears and form switches to sign-in mode |
+
+---
