@@ -1,8 +1,10 @@
 # Ignore everything at the root by default
 /*
 
-# Framework (git submodule)
+# Framework files
 !cosmo
+!cosmo/**
+!VERSION
 
 # Project state
 !.cosmo-state/
@@ -12,4 +14,3 @@
 !img/
 !README.md
 !.gitignore
-!.gitmodules

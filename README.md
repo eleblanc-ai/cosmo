@@ -4,7 +4,7 @@
 
 Cosmo-workspace is a template repository for building React apps with Cosmo — a software development identity for Claude. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
-The `cosmo/` folder is a git submodule pointing at [github.com/eleblanc-ai/cosmo](https://github.com/eleblanc-ai/cosmo), the Cosmo framework. Your project files live alongside it in the workspace.
+The `cosmo/` folder contains the Cosmo framework. Your project files live alongside it in the workspace.
 
 ---
 
@@ -44,10 +44,8 @@ Cosmo runs inside an AI coding agent using project instructions.
 **1. Clone the template**
 
 ```bash
-git clone --recurse-submodules https://github.com/eleblanc-ai/cosmo-workspace my-project
+git clone https://github.com/eleblanc-ai/cosmo-workspace my-project
 ```
-
-The `--recurse-submodules` flag pulls in the `cosmo/` framework alongside the workspace.
 
 **2. Open in your AI coding agent**
 
@@ -79,17 +77,17 @@ start cosmo
 
 ## Workspace structure
 
-Each workspace holds exactly one project. The `cosmo/` folder is the framework (a git submodule); your app lives in a named subfolder alongside it.
+Each workspace holds exactly one project. The `cosmo/` folder is the framework; your app lives in a named subfolder alongside it.
 
 ```
 cosmo-workspace/
-├── cosmo/                 ← Cosmo framework (git submodule, read-only)
+├── cosmo/                 ← Cosmo framework (read-only)
 │   ├── cosmo.md           ← Identity instructions
 │   ├── workflow.md        ← The 4-phase loop
 │   ├── architecture.md    ← Universal architecture principles
 │   ├── templates.md       ← Document templates
-│   ├── stacks/            ← Stack-specific rules
-│   └── VERSION            ← Framework version
+│   └── stacks/            ← Stack-specific rules
+├── VERSION                ← Installed framework version
 ├── .cosmo-state/          ← Project state (tracked by your workspace repo)
 │   ├── spec.md            ← Your product spec (Phase 1 output)
 │   ├── current-phase.md   ← Resume point when pausing
@@ -110,11 +108,7 @@ Cosmo never edits framework files. To start a new project, clone a fresh copy of
 
 ## Updating Cosmo
 
-Cosmo checks for updates at the start of each session and prompts you to apply them. If you prefer to update manually:
-
-```bash
-git submodule update --remote cosmo
-```
+Cosmo checks for updates at the start of each session and prompts you to apply them. If an update is available and you say yes, Cosmo downloads the new framework files, updates `VERSION`, and commits the change to your workspace.
 
 ---
 
@@ -125,8 +119,7 @@ You:    start cosmo
 Cosmo:  Update available (your version: 1.2, latest: 1.3). Update now? (yes/no)
 
 You:    yes
-Cosmo:  [updates Cosmo submodule]
-        Updated. Phase 1: Interview — Writing spec
+Cosmo:  Updated. Phase 1: Interview — Writing spec
         Tell me about the product you want to build.
 
 You:    A flashcard app. Create decks, flip through cards, track what you know.
