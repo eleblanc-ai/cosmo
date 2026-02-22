@@ -123,8 +123,8 @@ You:    start cosmo
 Cosmo:  Phase 1: Interview — Writing spec
         Tell me about the product you want to build.
 
-You:    A recipe app where AI helps you craft recipes from sources around the web.
-Cosmo:  Great. A few questions...
+You:    A flashcard app. Create decks, flip through cards, track what you know.
+Cosmo:  Got it. A few questions to sharpen the spec...
         [interviews you, writes spec.md]
         Does this spec capture your vision? (yes/no)
 
@@ -137,7 +137,7 @@ You:    yes
 Cosmo:  Phase 3: Implement — Building and verifying
         [builds, tests, verifies]
         Phase 4: Approval — Presenting slice
-        All 12 tests pass. Here's what was built...
+        All 9 tests pass. Here's what was built...
         Approve this slice? (yes/no)
 
 You:    yes
