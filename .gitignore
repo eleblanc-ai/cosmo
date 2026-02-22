@@ -1,23 +1,15 @@
-# Ignore everything at the root
+# Ignore everything at the root by default
 /*
 
-# Except the cosmo directory, README, and this file
-!cosmo/
+# Framework (git submodule)
+!cosmo
+
+# Project state
+!.cosmo-state/
+!.cosmo-state/**
+
+# Template files
 !img/
 !README.md
 !.gitignore
-
-
-# Include all files in cosmo by default
-!cosmo/**
-
-# But ignore all files in slices except .gitkeep
-cosmo/slices/*
-!cosmo/slices/.gitkeep
-
-# Ignore runtime state files
-cosmo/current-phase.md
-cosmo/current-plan.md
-
-# Local development only — not part of template
-reset.sh
+!.gitmodules

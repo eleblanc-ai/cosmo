@@ -86,6 +86,7 @@ An AI-enabled recipe lab where users collect source recipes from around the web,
 - `created_at`
 
 ## Architecture
+**Stack file:** cosmo/stacks/react-vite-supabase.md
 - Frontend: React 18 + Vite + TypeScript
 - Styling: Tailwind CSS utility classes only
 - Auth + DB: Supabase (Postgres + Supabase Auth)
