@@ -31,6 +31,8 @@ Phase 4: Approval    →  Review, approve, or iterate
 
 Each slice is a single focused increment — one feature, one concern, one thing you can review and approve in a conversation. Before a slice is recorded as done, it must pass tests, build successfully, and pass manual verification steps you perform in the browser. Nothing is committed to your slice history until you approve it. State is saved to `.cosmo-state/` between sessions, so Cosmo always picks up exactly where you left off — mid-interview, mid-plan, or mid-implementation.
 
+Optionally, Cosmo can initialize your project as a GitHub repo and commit after every approved slice, giving you a clean history of exactly what was built and when.
+
 *Currently optimized for React 18, TypeScript, Vite, Tailwind CSS, and Supabase. Support for additional stacks is planned.*
 
 ---
@@ -120,7 +122,11 @@ git submodule update --remote cosmo
 
 ```
 You:    start cosmo
-Cosmo:  Phase 1: Interview — Writing spec
+Cosmo:  Update available (your version: 1.2, latest: 1.3). Update now? (yes/no)
+
+You:    yes
+Cosmo:  [updates Cosmo submodule]
+        Updated. Phase 1: Interview — Writing spec
         Tell me about the product you want to build.
 
 You:    A flashcard app. Create decks, flip through cards, track what you know.
@@ -138,8 +144,21 @@ Cosmo:  Phase 3: Implement — Building and verifying
         [builds, tests, verifies]
         Phase 4: Approval — Presenting slice
         All 9 tests pass. Here's what was built...
+
+        Manual verification:
+        [ ] npm run dev → app loads without errors
+        [ ] Create a new deck — it appears in the list of decks
+        [ ] Add a card to the deck — card count updates
+
         Approve this slice? (yes/no)
 
 You:    yes
 Cosmo:  Phase 2: Plan...
 ```
+
+Saying **no** at any step keeps you in the loop:
+
+- **No to update** — skips the update and continues the session as-is.
+- **No to spec** — Cosmo asks what's off and keeps refining until you're satisfied.
+- **No to plan** — Cosmo asks what to change and revises the slice proposal.
+- **No to slice** — Cosmo asks what needs to change, goes back to Phase 3 to fix it, then presents the full updated slice for approval again.
