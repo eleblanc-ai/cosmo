@@ -1,6 +1,6 @@
 # Architecture Guidelines
 
-> **Note:** These are universal architectural principles that apply to any project. Your `cosmo/spec.md` contains project-specific rules (language, framework, folder structure, etc.).
+> **Note:** These are universal architectural principles that apply to any project. Your `cosmo-instructions/spec.md` contains project-specific rules (language, framework, folder structure, etc.).
 
 ## Table of Contents
 1. [Core Principles](#core-principles) - Buckets, boundaries, Rule of Three
@@ -293,8 +293,8 @@ If uncertain, note in "Risks/Open decisions" and discuss with user.
 ### When Implementing (Phase 3)
 
 Follow this checklist:
-1. Read `cosmo/architecture.md` (this file) - Universal principles
-2. Read `cosmo/spec.md` Architecture section - Project-specific rules
+1. Read `cosmo-instructions/architecture.md` (this file) - Universal principles
+2. Read `cosmo-instructions/spec.md` Architecture section - Project-specific rules
 3. Read relevant existing code - Understand patterns
 4. Place files according to bucket rules
 5. Respect import boundaries (run check command from spec.md)
@@ -416,7 +416,7 @@ Use suffixes to indicate file purpose:
 
 **IMPORTANT:** This file contains universal architectural principles that apply to any project.
 
-**Your project MUST define these in `cosmo/spec.md` Architecture section:**
+**Your project MUST define these in `cosmo-instructions/spec.md` Architecture section:**
 
 1. **Language/Framework**: What you're building with (Python/Django, JavaScript/React, Go, etc.)
 2. **Folder Structure**: Which bucket pattern you're using and exact directory names

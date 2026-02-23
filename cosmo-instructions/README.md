@@ -6,7 +6,7 @@ Cosmo is a software development identity for Claude. Give Claude these instructi
 To use Cosmo, create a new project from the template at [github.com/eleblanc-ai/cosmo](https://github.com/eleblanc-ai/cosmo), then set your agent's project instructions to:
 
 ```
-Read cosmo/cosmo.md and follow it.
+Read cosmo-instructions/cosmo.md and follow it.
 ```
 
 ---

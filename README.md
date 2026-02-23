@@ -4,7 +4,7 @@
 
 Cosmo is a template repository for building React apps with an AI dev partner. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
-The `cosmo/` folder contains the Cosmo framework. Your project files live alongside it in the workspace.
+The `cosmo-instructions/` folder contains the Cosmo framework. Your project files live alongside it in the workspace.
 
 ---
 
@@ -58,7 +58,7 @@ Open your cloned folder with a Claude coding agent that supports project-level i
 Set your agent's project instructions to:
 
 ```
-Read cosmo/cosmo.md and follow it.
+Read cosmo-instructions/cosmo.md and follow it.
 ```
 
 Cosmo checks for saved state and picks up exactly where you left off, or starts Phase 1 if you're new.
@@ -79,11 +79,11 @@ start cosmo
 
 ## Workspace structure
 
-Each workspace holds exactly one project. Project files live at the root alongside the `cosmo/` framework folder.
+Each workspace holds exactly one project. Project files live at the root alongside the `cosmo-instructions/` framework folder.
 
 ```
 my-project/
-├── cosmo/                 ← Cosmo framework (read-only)
+├── cosmo-instructions/                 ← Cosmo framework (read-only)
 │   ├── cosmo.md           ← Identity instructions
 │   ├── workflow.md        ← The 4-phase loop
 │   ├── architecture.md    ← Universal architecture principles

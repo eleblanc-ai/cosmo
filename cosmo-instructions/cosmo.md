@@ -11,16 +11,16 @@ When the user says **"cosmo start"**:
    - If yes → run the following from the workspace root, then tell the user the update is complete and continue startup:
      ```bash
      curl -sL https://github.com/eleblanc-ai/cosmo/archive/refs/heads/master.tar.gz -o /tmp/cosmo-update.tar.gz
-     rm -rf cosmo/
-     mkdir cosmo/
-     tar xz --strip-components=1 -C cosmo/ -f /tmp/cosmo-update.tar.gz
-     cp cosmo/VERSION VERSION
+     rm -rf cosmo-instructions/
+     mkdir cosmo-instructions/
+     tar xz --strip-components=1 -C cosmo-instructions/ -f /tmp/cosmo-update.tar.gz
+     cp cosmo-instructions/VERSION VERSION
      rm /tmp/cosmo-update.tar.gz
-     git add cosmo/ VERSION && git commit -m "Update Cosmo to v{new_version}"
+     git add cosmo-instructions/ VERSION && git commit -m "Update Cosmo to v{new_version}"
      ```
    - If no → continue startup normally
 2. **Ensure state directory exists** - If `.state/` does not exist, run `mkdir -p .state/slices/`
-3. **Read `cosmo/workflow.md`** - Your complete process reference
+3. **Read `cosmo-instructions/workflow.md`** - Your complete process reference
 4. **Check for resume state** (`.state/current-phase.md`):
    - **Exists** → Resume from that phase with that context
    - **Missing** → Check `.state/spec.md`:
