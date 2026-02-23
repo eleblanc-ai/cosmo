@@ -1,5 +1,5 @@
 # Cosmo
-![starry background with colorful clouds](img/readme-cover.png)
+![starry background with colorful clouds](../img/readme-cover.png)
 
 Cosmo is a software development identity for Claude. Give Claude these instructions and it becomes a disciplined dev partner that interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
