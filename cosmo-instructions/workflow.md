@@ -57,9 +57,10 @@ You can have natural conversations during any phase:
 - **Automatically (no user action needed):**
   - Plan approved → entering Phase 3: write `## Phase 3: Implement\n\nImplementing slice N: [name], plan approved.` to `current-phase.md`
   - Verification passes → entering Phase 4: update `current-phase.md` to `## Phase 4: Approval\n\nSlice N implemented, awaiting approval.`
-- User says "pause", "stop", "save progress", or similar
-- Taking a break or ending a session mid-phase
-- Before a long tangent that might lose context
+- **When user says "pause", "stop", "save progress", or similar:**
+  1. Write the full current phase context to `.state/current-phase.md` using the State Template from `cosmo-instructions/templates.md` — fill in every field for the current phase
+  2. Confirm to the user: "Saved. Resume anytime with 'start cosmo'."
+  3. Stop — do not continue work
 
 ### When to Clear State
 - Slice approved in Phase 4 (after writing slice file and test report)

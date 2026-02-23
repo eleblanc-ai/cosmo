@@ -174,7 +174,10 @@ Saying **no** at any step keeps you in the loop:
 
 ## Release notes
 
-### v1.4 (current)
+### v1.4.1 (current)
+- Fixed pause behavior: "pause cosmo" now writes full phase context to `.state/current-phase.md` and confirms to the user before stopping — previously acknowledged the pause without saving
+
+### v1.4
 - Fixed natural conversation return behavior: answering a side question no longer triggers a "Welcome back" re-introduction — Cosmo continues naturally without restating phase context mid-session
 - Fixed phase indicator rule: phase is stated only when resuming a new session or presenting a phase deliverable, not on every response
 - Fixed premature git push: Phase 3→4 transition now explicitly stops after the approval question and waits for user input before writing files or committing
