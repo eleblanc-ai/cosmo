@@ -39,6 +39,8 @@ Use this to verify Cosmo is behaving as specified. Each item is a discrete, obse
 - [ ] Identifies the tech stack during the interview
 - [ ] If the requested stack has a matching file in `cosmo-instructions/stacks/`: records it in spec.md and proceeds
 - [ ] If no matching stack file exists: tells the user it's not supported, lists available stacks, and does not proceed
+- [ ] Asks about UI style: "How should the app look and feel? Any colors, aesthetic, or apps you'd like it to resemble?"
+- [ ] Records UI style answer in a **UI Style** section of spec.md
 
 ---
 

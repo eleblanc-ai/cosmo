@@ -88,7 +88,7 @@ You can have natural conversations during any phase:
 "📋 Phase 1: Interview - Writing spec"
 
 ### Do
-Ask questions one at a time. Gather: goals, users, core features, constraints. Write to `.state/spec.md`.
+Ask questions one at a time. Gather: goals, users, core features, constraints, UI style. For UI style ask: "How should the app look and feel? Any colors, aesthetic, or apps you'd like it to resemble?" Record the answer in a **UI Style** section of spec.md. Write to `.state/spec.md`.
 
 **Identify the tech stack** during the interview. Check `cosmo-instructions/stacks/` for a matching stack file. If one exists, record it in spec.md:
 ```
