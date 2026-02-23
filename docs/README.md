@@ -15,6 +15,7 @@ The `cosmo-instructions/` folder contains the Cosmo framework. Your project file
 - [Workspace structure](#workspace-structure)
 - [Updating Cosmo](#updating-cosmo)
 - [Example session](#example-session)
+- [Release notes](#release-notes)
 
 ---
 
@@ -125,36 +126,6 @@ Cosmo checks for updates at the start of each session and prompts you to apply t
 
 ---
 
-## Release notes
-
-### v1.2 (current)
-- Renamed `cosmo/` to `cosmo-instructions/` for clarity
-- Moved framework docs and checklists to `docs/`; root is now free for the project README
-- Tiered rule for out-of-scope code changes: additive changes proceed with a note, behavioral changes require a flag, breaking changes require explicit approval
-- Fixed routing question behavior: approval question only appears when presenting a completed deliverable, not on every response
-- Added `docs/behavior-checklist.md` and `docs/stack-checklist.md` as verification tools
-
-### v1.1
-- Auto state-save breadcrumbs written at phase transitions — no manual save needed
-- Cosmo commits and pushes after every approved slice when GitHub integration is enabled
-- CSS build output check added for slices involving Tailwind setup
-- Framework files protected — Cosmo cannot edit its own instructions
-- Flattened workspace structure: project files live at root alongside `cosmo-instructions/`
-- State directory renamed from `.cosmo-state/` to `.state/`
-- Phase 3 scope enforcement: existing out-of-scope functionality may not be removed or broken
-
-### v1.0
-- 4-phase loop: Interview → Plan → Implement → Approval
-- Spec writing via structured interview, saved to `.state/spec.md`
-- Slice-based delivery: one focused increment per loop, approved before the next begins
-- Session persistence: `.state/` saves phase context so work resumes exactly where it left off
-- GitHub integration: optional commit + push after each approved slice
-- Self-update mechanism: version check at startup, one-command update
-- Stack file system: `stacks/react-vite-supabase.md` with rules for React 18, Vite, TypeScript, Tailwind v4, Supabase
-- Universal architecture principles and code quality rules
-
----
-
 ## Example session
 
 ```
@@ -198,3 +169,33 @@ Saying **no** at any step keeps you in the loop:
 - **No to spec** — Cosmo asks what's off and keeps refining until you're satisfied.
 - **No to plan** — Cosmo asks what to change and revises the slice proposal.
 - **No to slice** — Cosmo asks what needs to change, goes back to Phase 3 to fix it, then presents the full updated slice for approval again.
+
+---
+
+## Release notes
+
+### v1.2 (current)
+- Renamed `cosmo/` to `cosmo-instructions/` for clarity
+- Moved framework docs and checklists to `docs/`; root is now free for the project README
+- Tiered rule for out-of-scope code changes: additive changes proceed with a note, behavioral changes require a flag, breaking changes require explicit approval
+- Fixed routing question behavior: approval question only appears when presenting a completed deliverable, not on every response
+- Added `docs/behavior-checklist.md` and `docs/stack-checklist.md` as verification tools
+
+### v1.1
+- Auto state-save breadcrumbs written at phase transitions — no manual save needed
+- Cosmo commits and pushes after every approved slice when GitHub integration is enabled
+- CSS build output check added for slices involving Tailwind setup
+- Framework files protected — Cosmo cannot edit its own instructions
+- Flattened workspace structure: project files live at root alongside `cosmo-instructions/`
+- State directory renamed from `.cosmo-state/` to `.state/`
+- Phase 3 scope enforcement: existing out-of-scope functionality may not be removed or broken
+
+### v1.0
+- 4-phase loop: Interview → Plan → Implement → Approval
+- Spec writing via structured interview, saved to `.state/spec.md`
+- Slice-based delivery: one focused increment per loop, approved before the next begins
+- Session persistence: `.state/` saves phase context so work resumes exactly where it left off
+- GitHub integration: optional commit + push after each approved slice
+- Self-update mechanism: version check at startup, one-command update
+- Stack file system: `stacks/react-vite-supabase.md` with rules for React 18, Vite, TypeScript, Tailwind v4, Supabase
+- Universal architecture principles and code quality rules
