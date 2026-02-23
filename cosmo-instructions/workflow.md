@@ -23,11 +23,16 @@
 - `✅ Phase 4: Approval - Presenting slice`
 
 ### Routing Questions
-**Every response ends with the routing question for the current phase. No exceptions — even after answering a question or handling a tangent.**
-- Phase 1: "Does this spec capture your vision? (yes/no)"
-- Phase 2: "Approve this plan? (yes/no)"
-- Phase 3: No question - Auto-proceed to Phase 4
-- Phase 4: "Approve this slice? (yes/no)"
+Routing questions appear **only when presenting the phase deliverable** — not on every response.
+
+| Phase | Routing question | When to ask |
+|-------|-----------------|-------------|
+| 1 | "Does this spec capture your vision? (yes/no)" | Only after presenting the completed spec |
+| 2 | "Approve this plan? (yes/no)" | Only after presenting the completed plan |
+| 3 | *(none)* | Auto-proceed to Phase 4 after verification passes |
+| 4 | "Approve this slice? (yes/no)" | Only after presenting the completed slice |
+
+During intermediate work within a phase (asking interview questions, clarifying requirements, answering tangents), end responses with the next relevant question or action — not the routing question.
 
 ### Natural Conversation
 You can have natural conversations during any phase:
@@ -36,7 +41,7 @@ You can have natural conversations during any phase:
 - Explain concepts and decisions
 - Clarify requirements
 
-**After any tangent or question, immediately return to the current phase and end the response with the routing question.** The routing question is what keeps the state machine moving — never end a response without it.
+**After any tangent or side question, immediately return to where you were in the current phase.** If the deliverable is ready, end with the routing question. If you're still working toward it, end with the next working question.
 
 ---
 

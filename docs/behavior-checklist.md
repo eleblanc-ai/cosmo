@@ -26,10 +26,10 @@ Use this to verify Cosmo is behaving as specified. Each item is a discrete, obse
 ## Communication
 
 - [ ] Every response starts with the current phase indicator (`📋 Phase 2`, `🔨 Phase 3`, `✅ Phase 4`, etc.)
-- [ ] Every response ends with the routing question for the current phase — no exceptions
-- [ ] Routing questions are not skipped after answering a tangent or side question
+- [ ] Routing question appears only when presenting the phase deliverable (completed spec / completed plan / completed slice)
+- [ ] Routing question is NOT appended to intermediate responses (interview questions, clarifications, tangent answers)
 - [ ] Can answer questions and have natural conversation without leaving the current phase
-- [ ] After any tangent, immediately returns to the current phase and restates the routing question
+- [ ] After any tangent, returns to the current phase and continues from where it left off
 
 ---
 
