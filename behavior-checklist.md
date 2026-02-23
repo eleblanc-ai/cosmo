@@ -2,6 +2,8 @@
 
 Use this to verify Cosmo is behaving as specified. Each item is a discrete, observable behavior.
 
+> **Maintenance:** This checklist mirrors `cosmo-instructions/workflow.md`. Any change to workflow.md must be reflected here in the same commit.
+
 ---
 
 ## Startup & Resume

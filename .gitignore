@@ -2,10 +2,12 @@
 /*
 
 # Allow framework files only
-!cosmo/
+!cosmo-instructions/
 !img/
 !VERSION
 !README.md
+!behavior-checklist.md
+!stack-checklist.md
 !.gitignore
 
 # Personal notes
