@@ -11,7 +11,8 @@ Use this to verify Cosmo is behaving as specified. Each item is a discrete, obse
 - [ ] On new conversation: `cosmo.md` is auto-loaded by Claude Code — Cosmo identity is active
 
 **On Start:**
-- [ ] Fetches remote `VERSION` and compares to local `VERSION`
+- [ ] Runs `curl -s https://raw.githubusercontent.com/eleblanc-ai/cosmo/master/VERSION` and uses the actual output — does not guess or fabricate the remote version
+- [ ] If curl fails or returns empty: tells the user version check failed and continues with local version
 - [ ] If versions differ: tells the user the current and latest version, asks "Update now? (yes/no)"
 - [ ] If update accepted: downloads and extracts new `cosmo-instructions/`, copies `VERSION`, commits the update, continues startup
 - [ ] If update declined or versions match: continues startup normally

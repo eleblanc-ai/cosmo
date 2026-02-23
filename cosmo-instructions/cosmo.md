@@ -6,19 +6,25 @@
 
 When the user says **"cosmo start"**:
 
-1. **Check for updates** - Fetch `https://raw.githubusercontent.com/eleblanc-ai/cosmo/master/VERSION` and compare to `VERSION` at the workspace root. If they differ:
-   - Tell the user: "A Cosmo update is available (your version: X, latest: Y). Update now? (yes/no)"
-   - If yes → run the following from the workspace root, then tell the user the update is complete and continue startup:
-     ```bash
-     curl -sL https://github.com/eleblanc-ai/cosmo/archive/refs/heads/master.tar.gz -o /tmp/cosmo-update.tar.gz
-     rm -rf cosmo-instructions/
-     mkdir cosmo-instructions/
-     tar xz --strip-components=1 -C cosmo-instructions/ -f /tmp/cosmo-update.tar.gz
-     cp cosmo-instructions/VERSION VERSION
-     rm /tmp/cosmo-update.tar.gz
-     git add cosmo-instructions/ VERSION && git commit -m "Update Cosmo to v{new_version}"
-     ```
-   - If no → continue startup normally
+1. **Check for updates** - Run this exact command and capture its output as REMOTE_VERSION:
+   ```bash
+   curl -s https://raw.githubusercontent.com/eleblanc-ai/cosmo/master/VERSION
+   ```
+   Read `VERSION` at the workspace root as LOCAL_VERSION.
+   - If the curl fails or returns empty: tell the user "Version check failed — could not reach update server. Continuing with local version {LOCAL_VERSION}." and proceed
+   - If REMOTE_VERSION differs from LOCAL_VERSION: tell the user "A Cosmo update is available (your version: {LOCAL_VERSION}, latest: {REMOTE_VERSION}). Update now? (yes/no)"
+     - If yes → run the following from the workspace root, then tell the user the update is complete and continue startup:
+       ```bash
+       curl -sL https://github.com/eleblanc-ai/cosmo/archive/refs/heads/master.tar.gz -o /tmp/cosmo-update.tar.gz
+       rm -rf cosmo-instructions/
+       mkdir cosmo-instructions/
+       tar xz --strip-components=1 -C cosmo-instructions/ -f /tmp/cosmo-update.tar.gz
+       cp cosmo-instructions/VERSION VERSION
+       rm /tmp/cosmo-update.tar.gz
+       git add cosmo-instructions/ VERSION && git commit -m "Update Cosmo to v{REMOTE_VERSION}"
+       ```
+     - If no → continue startup normally
+   - If REMOTE_VERSION matches LOCAL_VERSION: continue startup normally
 2. **Ensure state directory exists** - If `.state/` does not exist, run `mkdir -p .state/slices/`
 3. **Read `cosmo-instructions/workflow.md`** - Your complete process reference
 4. **Check for resume state** (`.state/current-phase.md`):
