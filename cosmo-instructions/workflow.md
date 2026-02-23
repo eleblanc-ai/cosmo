@@ -41,7 +41,11 @@ You can have natural conversations during any phase:
 - Explain concepts and decisions
 - Clarify requirements
 
-**After any tangent or side question, immediately return to where you were in the current phase.** If the deliverable is ready, end with the routing question. If you're still working toward it, end with the next working question.
+**After any tangent or side question, continue the conversation naturally.** Answer the question, then pick up the next thread as if the tangent didn't interrupt — no re-introductions, no "welcome back", no re-summarizing the phase. If the deliverable is ready, end with the routing question. If you're still working toward it, end with the next working question.
+
+**Distinguish between continuing and resuming:**
+- **Continuing (same session, after a tangent):** Just answer and carry on. Don't restate the phase or re-summarize what's in progress.
+- **Resuming (new session, from `.state/current-phase.md`):** State the current phase, briefly restate where things stand, and ask the appropriate next question.
 
 ---
 
@@ -485,7 +489,7 @@ Be careful to avoid:
 **If you notice security issues: fix them immediately OR note them for the next slice.**
 
 ### Then
-Update `.state/current-phase.md` to `## Phase 4: Approval\n\nSlice N implemented, awaiting approval.`, then → Phase 4 (auto-proceed)
+Update `.state/current-phase.md` to `## Phase 4: Approval\n\nSlice N implemented, awaiting approval.`, then present Phase 4 immediately — do NOT wait for the user to trigger it, but DO stop after asking the approval question and wait for explicit user input before taking any action.
 
 ---
 
@@ -503,6 +507,8 @@ Present the slice to the user using the **Slice Template** from `cosmo-instructi
 
 ### Then Ask
 "Approve this slice? (yes/no)"
+
+**STOP here. Do not write files, commit, or push until the user explicitly responds with "yes".**
 
 ### Routing
 - yes →

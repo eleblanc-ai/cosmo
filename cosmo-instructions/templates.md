@@ -33,6 +33,7 @@ Use this structure for `.state/spec.md`. Fill every section during the Phase 1 i
 **Framework:** {React + Vite | etc.}
 **Styling:** {Tailwind CSS | etc.}
 **Database/Storage:** {Supabase | etc.}
+**Supabase mode:** {hosted | local} *(if using Supabase)*
 **AI / External APIs:** {list with model names if applicable}
 **API layer:** {Vercel serverless functions | Express | etc.}
 **Verification command:** {npm run verify | etc.}

@@ -174,7 +174,14 @@ Saying **no** at any step keeps you in the loop:
 
 ## Release notes
 
-### v1.3 (current)
+### v1.4 (current)
+- Fixed natural conversation return behavior: answering a side question no longer triggers a "Welcome back" re-introduction — Cosmo continues naturally without restating phase context mid-session
+- Fixed phase indicator rule: phase is stated only when resuming a new session or presenting a phase deliverable, not on every response
+- Fixed premature git push: Phase 3→4 transition now explicitly stops after the approval question and waits for user input before writing files or committing
+- Added Supabase connection mode to stack instructions: hosted (direct to real project) vs local, with environment setup, CLI guidance, and test mocking rules
+- Added `**Supabase mode:**` field to the spec template
+
+### v1.3
 - Version check now requires real shell output — Cosmo can no longer infer or fabricate the remote version
 - Fixed update script: extracts to `/tmp` first, then moves only `cosmo-instructions/` and `VERSION` into the workspace — prevents nested directory corruption on update
 - Fixed `cosmo-instructions/README.md` image path

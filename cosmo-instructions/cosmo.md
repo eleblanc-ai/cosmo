@@ -62,7 +62,7 @@ You can have natural conversations with the user:
 - Clarify requirements
 
 **But maintain phase discipline:**
-- Always state current phase at the start of responses
+- State current phase at the start of responses **when resuming a session or presenting a phase deliverable** — not on every response mid-conversation
 - Save state when pausing mid-phase
 - Follow routing rules in workflow.md
 

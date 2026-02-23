@@ -91,6 +91,45 @@ vi.mock('./some-module', () => ({ useThing: () => ({ fn: mockFn }) }))
 
 ## Supabase
 
+### Connection Mode
+
+**Ask during Phase 1 interview:** "Are you connecting to a hosted Supabase project or running Supabase locally?"
+
+**Hosted (direct):** Record in spec.md: `**Supabase mode:** hosted`
+**Local:** Record in spec.md: `**Supabase mode:** local`
+
+---
+
+**If mode = hosted:**
+
+Environment setup (`.env` at project root — must be in `.gitignore`):
+```
+VITE_SUPABASE_URL=https://{project-ref}.supabase.co
+VITE_SUPABASE_ANON_KEY={anon-key}
+```
+
+- No `supabase init`, no `supabase start`, no Docker required
+- The user gets these values from their Supabase project dashboard → Settings → API
+- Schema changes run directly in the Supabase SQL editor (not via migration files)
+- To deploy Edge Functions: link the project once (`supabase link --project-ref {ref}`), then deploy with `supabase functions deploy`
+- **Tests must mock the Supabase client** — never make real network calls to the hosted project in tests
+
+**If mode = local:**
+
+Use the Supabase CLI:
+```bash
+supabase init
+supabase start
+```
+
+Environment setup (`.env`):
+```
+VITE_SUPABASE_URL=http://127.0.0.1:54321
+VITE_SUPABASE_ANON_KEY={local-anon-key printed by supabase start}
+```
+
+---
+
 ### Auth
 - Use `supabase.auth.onAuthStateChange` for session management
 - In Edge Functions, pass the JWT explicitly: `supabase.auth.getUser(jwt)` — `getUser()` without a JWT fails in Deno's sessionless context
