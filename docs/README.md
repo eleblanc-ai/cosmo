@@ -174,7 +174,12 @@ Saying **no** at any step keeps you in the loop:
 
 ## Release notes
 
-### v1.2 (current)
+### v1.3 (current)
+- Version check now requires real shell output — Cosmo can no longer infer or fabricate the remote version
+- Fixed update script: extracts to `/tmp` first, then moves only `cosmo-instructions/` and `VERSION` into the workspace — prevents nested directory corruption on update
+- Fixed `cosmo-instructions/README.md` image path
+
+### v1.2
 - Renamed `cosmo/` to `cosmo-instructions/` for clarity
 - Moved framework docs and checklists to `docs/`; root is now free for the project README
 - Tiered rule for out-of-scope code changes: additive changes proceed with a note, behavioral changes require a flag, breaking changes require explicit approval
