@@ -1,5 +1,63 @@
 # Cosmo Templates
 
+## Spec Template
+
+Use this structure for `.state/spec.md`. Fill every section during the Phase 1 interview. Do not leave sections blank — if something is not yet known, note it explicitly.
+
+---
+
+# Product Spec
+**Created:** {YYYY-MM-DD} | **Status:** {Draft (Phase 1 Interview) | Approved}
+
+## Overview
+{1–3 sentence description of the product, the problem it solves, and who it's for.}
+
+## Goals
+- {Primary goal}
+- {Secondary goal}
+
+## Target Users
+{Who will use this — role, technical level, context}
+
+## Core Features
+{Feature name} — {brief description}
+- {sub-detail if needed}
+
+{Feature name} — {brief description}
+
+## Constraints
+- {Technical, scope, or operational constraint}
+
+## Architecture
+**Language:** {TypeScript | JavaScript | etc.}
+**Framework:** {React + Vite | etc.}
+**Styling:** {Tailwind CSS | etc.}
+**Database/Storage:** {Supabase | etc.}
+**AI / External APIs:** {list with model names if applicable}
+**API layer:** {Vercel serverless functions | Express | etc.}
+**Verification command:** {npm run verify | etc.}
+**Local dev:** {npm run dev | vercel dev | etc.}
+
+## Data Model
+{Table/schema name}:
+- {field} {type} {notes}
+- {field} {type} {notes}
+
+## UI Style
+**Aesthetic:** {e.g. Minimal editorial, playful, bold, professional}
+**Color palette:** {Primary, background, text colors}
+**Typography:** {Font style or feel}
+**UI density:** {Spacious | Compact}
+**Tone:** {e.g. Premium, calm, energetic}
+
+## Stack
+**Stack file:** cosmo-instructions/stacks/{stack-file.md}
+**GitHub integration:** {enabled | disabled}
+
+---
+
+
+
 ## Plan Template
 
 Use this structure for `.state/current-plan.md` to track the evolving scope of the current slice.
