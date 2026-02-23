@@ -94,7 +94,7 @@ Ask questions one at a time. Gather: goals, users, core features, constraints. W
 ```
 **Stack file:** cosmo-instructions/stacks/react-vite-supabase.md
 ```
-If no matching stack file exists, proceed without one — the spec's Architecture section is the sole reference.
+If no matching stack file exists: tell the user this stack is not currently supported, list the available stacks from `cosmo-instructions/stacks/`, and do not proceed.
 
 **If updating existing spec:** Review the entire spec for consistency and accuracy before and after applying the change. Ensure the update doesn't conflict with existing requirements, data models, or architectural decisions. Update all affected sections, not just the section most directly related to the request.
 
