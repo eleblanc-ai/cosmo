@@ -3,9 +3,9 @@
 
 # Allow framework files only
 !cosmo-instructions/
+!docs/
 !img/
 !VERSION
-!README.md
 !behavior-checklist.md
 !stack-checklist.md
 !.gitignore
