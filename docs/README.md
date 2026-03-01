@@ -2,9 +2,9 @@
 # Cosmo
 ![starry background with colorful clouds](/img/readme-cover.png)
 
-Cosmo is a template repository for building React apps with an AI dev partner. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
+Cosmo is a template for building React apps with **Claude Code** as your dev partner. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
-The `cosmo-instructions/` folder contains the Cosmo framework. Your project files live alongside it in the workspace.
+**Requires Claude Code** (Anthropic's CLI agent). Also works with GitHub Copilot agent mode in VS Code when Claude is selected as the model. Any Claude-powered coding agent that supports project-level instructions and tool use should work.
 
 ---
 
@@ -49,9 +49,9 @@ gh repo create my-project --template eleblanc-ai/cosmo --clone --private
 
 This creates a fresh repo in your GitHub account with a clean history and clones it locally.
 
-**2. Open in your AI coding agent**
+**2. Open in Claude Code**
 
-Open your cloned folder with a Claude coding agent that supports project-level instructions and tool use. Tested with GitHub Copilot agent mode in VS Code (with Claude).
+Open your cloned folder in Claude Code (`claude` in your terminal from that directory). GitHub Copilot agent mode in VS Code with Claude selected also works.
 
 **3. Start a session**
 
