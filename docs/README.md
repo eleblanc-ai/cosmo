@@ -15,7 +15,6 @@ The `cosmo-instructions/` folder contains the Cosmo framework. Your project file
 - [Workspace structure](#workspace-structure)
 - [Updating Cosmo](#updating-cosmo)
 - [Example session](#example-session)
-- [Release notes](#release-notes)
 
 ---
 
@@ -172,45 +171,7 @@ Saying **no** at any step keeps you in the loop:
 
 ---
 
-## Release notes
+## Changelog
 
-### v1.4.1 (current)
-- Fixed pause behavior: "pause cosmo" now writes full phase context to `.state/current-phase.md` and confirms to the user before stopping — previously acknowledged the pause without saving
+See [releases](https://github.com/eleblanc-ai/cosmo/releases) for version history.
 
-### v1.4
-- Fixed natural conversation return behavior: answering a side question no longer triggers a "Welcome back" re-introduction — Cosmo continues naturally without restating phase context mid-session
-- Fixed phase indicator rule: phase is stated only when resuming a new session or presenting a phase deliverable, not on every response
-- Fixed premature git push: Phase 3→4 transition now explicitly stops after the approval question and waits for user input before writing files or committing
-- Added Supabase connection mode to stack instructions: hosted (direct to real project) vs local, with environment setup, CLI guidance, and test mocking rules
-- Added `**Supabase mode:**` field to the spec template
-
-### v1.3
-- Version check now requires real shell output — Cosmo can no longer infer or fabricate the remote version
-- Fixed update script: extracts to `/tmp` first, then moves only `cosmo-instructions/` and `VERSION` into the workspace — prevents nested directory corruption on update
-- Fixed `cosmo-instructions/README.md` image path
-
-### v1.2
-- Renamed `cosmo/` to `cosmo-instructions/` for clarity
-- Moved framework docs and checklists to `docs/`; root is now free for the project README
-- Tiered rule for out-of-scope code changes: additive changes proceed with a note, behavioral changes require a flag, breaking changes require explicit approval
-- Fixed routing question behavior: approval question only appears when presenting a completed deliverable, not on every response
-- Added `docs/behavior-checklist.md` and `docs/stack-checklist.md` as verification tools
-
-### v1.1
-- Auto state-save breadcrumbs written at phase transitions — no manual save needed
-- Cosmo commits and pushes after every approved slice when GitHub integration is enabled
-- CSS build output check added for slices involving Tailwind setup
-- Framework files protected — Cosmo cannot edit its own instructions
-- Flattened workspace structure: project files live at root alongside `cosmo-instructions/`
-- State directory renamed from `.cosmo-state/` to `.state/`
-- Phase 3 scope enforcement: existing out-of-scope functionality may not be removed or broken
-
-### v1.0
-- 4-phase loop: Interview → Plan → Implement → Approval
-- Spec writing via structured interview, saved to `.state/spec.md`
-- Slice-based delivery: one focused increment per loop, approved before the next begins
-- Session persistence: `.state/` saves phase context so work resumes exactly where it left off
-- GitHub integration: optional commit + push after each approved slice
-- Self-update mechanism: version check at startup, one-command update
-- Stack file system: `stacks/react-vite-supabase.md` with rules for React 18, Vite, TypeScript, Tailwind v4, Supabase
-- Universal architecture principles and code quality rules
