@@ -2,9 +2,9 @@
 # Cosmo
 ![starry background with colorful clouds](/img/readme-cover.png)
 
-Cosmo is a template for building React apps with **Claude Code** as your dev partner. Cosmo interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
+Cosmo is a development identity for **Claude Code** — delivered as a project template. It turns Claude into a disciplined dev partner that interviews you to write a spec, then builds your app in slices: focused, self-contained units of work, each built with tests and approved by you before the next one begins.
 
-**Requires Claude Code** (Anthropic's CLI agent). Also works with GitHub Copilot agent mode in VS Code when Claude is selected as the model. Any Claude-powered coding agent that supports project-level instructions and tool use should work.
+**Requires Claude Code** (Anthropic's CLI agent). Also works with GitHub Copilot agent mode in VS Code when Claude is selected as the model.
 
 ---
 
