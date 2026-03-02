@@ -55,11 +55,7 @@ Open your cloned folder in Claude Code (`claude` in your terminal from that dire
 
 **3. Start a session**
 
-Set your agent's project instructions to:
-
-```
-Read cosmo-instructions/cosmo.md and follow it.
-```
+The template includes a `CLAUDE.md` file that Claude Code reads automatically when it loads your project. Just open the folder and start a session — no manual setup required.
 
 Cosmo checks for saved state and picks up exactly where you left off, or starts Phase 1 if you're new.
 
