@@ -3,11 +3,7 @@
 
 Cosmo is a software development identity for Claude. Give Claude these instructions and it becomes a disciplined dev partner that interviews you to write a spec, then builds your app in slices: focused, self-contained units of work scoped to one feature or concern, each built with tests and approved by you before the next one begins.
 
-To use Cosmo, create a new project from the template at [github.com/eleblanc-ai/cosmo](https://github.com/eleblanc-ai/cosmo), then set your agent's project instructions to:
-
-```
-Read cosmo-instructions/cosmo.md and follow it.
-```
+To use Cosmo, create a new project from the template at [github.com/eleblanc-ai/cosmo](https://github.com/eleblanc-ai/cosmo). The template includes a `CLAUDE.md` file that Claude Code reads automatically — just open the project and say `cosmo start`.
 
 ---
 

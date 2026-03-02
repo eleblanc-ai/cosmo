@@ -90,6 +90,8 @@ my-project/
 │   ├── templates.md       ← Document templates
 │   └── stacks/            ← Stack-specific rules
 ├── VERSION                ← Installed framework version
+├── CLAUDE.md              ← Auto-loads Cosmo instructions (Claude Code)
+├── LICENSE
 ├── .state/          ← Project state
 │   ├── spec.md            ← Your product spec (Phase 1 output)
 │   ├── current-phase.md   ← Resume point when pausing
