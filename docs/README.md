@@ -2,7 +2,7 @@
 # Cosmo
 ![starry background with colorful clouds](/img/readme-cover.png)
 
-Cosmo is a development identity for **Claude Code**. Use this GitHub template to create a new repo for each project — that repo is where you build. Open it in Claude Code, say `cosmo start` — and Claude becomes a disciplined dev partner. It interviews you to write a spec, then builds your app in slices: focused, self-contained units of work, each built with tests and approved by you before the next one begins.
+Cosmo is a development identity for **Claude Code**. Use this GitHub template to start each project in its own repo. Open it in Claude Code, say `cosmo start` — and Claude becomes a disciplined dev partner. It interviews you to write a spec, then builds your app in slices: focused, self-contained units of work, each built with tests and approved by you before the next one begins.
 
 **Requires Claude Code** (Anthropic's CLI agent). Also works with GitHub Copilot agent mode in VS Code when Claude is selected as the agent.
 
