@@ -55,7 +55,11 @@ Open your cloned folder in Claude Code (`claude` in your terminal from that dire
 
 **3. Start a session**
 
-The template includes a `CLAUDE.md` file that Claude Code reads automatically when it loads your project. Just open the folder and start a session — no manual setup required.
+The template includes a `CLAUDE.md` file that Claude Code reads automatically when it loads your project. When you're ready, say:
+
+```
+cosmo start
+```
 
 Cosmo checks for saved state and picks up exactly where you left off, or starts Phase 1 if you're new.
 
@@ -68,7 +72,7 @@ pause cosmo
 Cosmo saves its phase context so the next session resumes without losing anything. To restart after pausing:
 
 ```
-start cosmo
+cosmo start
 ```
 
 ---
@@ -124,7 +128,7 @@ Cosmo checks for updates at the start of each session and prompts you to apply t
 ## Example session
 
 ```
-You:    start cosmo
+You:    cosmo start
 Cosmo:  Update available (your version: 1.2, latest: 1.3). Update now? (yes/no)
 
 You:    yes
